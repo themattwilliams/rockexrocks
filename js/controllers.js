@@ -6,21 +6,31 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
    var puzzleOne = {
       puzzle: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
       description: "The ^ character in a RegEx matches the beginning of a string. The \w means match any word. Taken together, what should happen? Type /^\w/ to find out.",
-      stringToSearch: "The rain in spain falls mainly on the plane",
+      stringToSearch: "The rain in spain falls mainly on the plain",
       regEx: "/^\w/",
       id: 1
    }
 
    var puzzleTwo = {
-      puzzle: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
-      description: "The ^ character in a RegEx matches the beginning of a string. The \w means match any word. Taken together, what should happen? Type /^\w/ to find out.",
-      stringToSearch: "The rain in spain falls mainly on the plane",
+      puzzle: "The Whole Word", difficulty: 1, attempted: false, completed: false, 
+      description: "The ^ character in a RegEx matches the beginning of a string. The \w means match any word. Add a + after the \w to match 1 or more of the preceding item.",
+      stringToSearch: "The raindeer in spain was hit mainly by the plane",
       regEx: "/^\w/",
       id: 2
    }
 
    $scope.learnPuzzles = [puzzleOne, puzzleTwo]
-   $scope.id = $routeParams.id;
+
+   $scope.learnPuzzles.forEach(function(puzzle){
+      if ($routeParams.id === puzzle.id.toString()) {
+         $scope.id = $routeParams.id;
+         // console.log("YAZTZII")
+         $scope.puzzle = puzzle
+      } else {
+         // console.log("puzzle not found")
+      }
+   })
+   
 
    // console.log("foo");
 
