@@ -6,6 +6,10 @@ app.config(['$routeProvider', '$httpProvider',  function($routeProvider, $httpPr
         templateUrl: '/partials/splash.html',
         controller: 'RegExController'
       })
+      .when('/allPuzzles', {
+        templateUrl: '/partials/allPuzzles.html',
+        controller: 'RegExController'
+      })
       // .when('/show/:id', {
       //   templateUrl: '/partials/show.html',
       //   controller: 'ShowController'
