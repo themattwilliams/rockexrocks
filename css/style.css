@@ -1,0 +1,23 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	flex: 1 100%;
+
+}
+
+.column-one {
+	background-color: #e67e22;
+}
+
+
+.column-two {
+	background-color: #2ecc71;
+}
+
+.column-three {
+	background-color: #3498db;
+}
+
+.column-four {
+	background-color: #ecf0f1;
+}

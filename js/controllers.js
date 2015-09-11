@@ -4,7 +4,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
    }
 
    var puzzleOne = {
-      puzzle: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
+      title: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
       description: "The ^ character in a RegEx matches the beginning of a string. The \w means match any word. Taken together, what should happen? Type /^\w/ to find out.",
       stringToSearch: "The rain in spain falls mainly on the plain",
       regEx: "/^\w/",
@@ -12,7 +12,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
    }
 
    var puzzleTwo = {
-      puzzle: "The Whole Word", difficulty: 1, attempted: false, completed: false, 
+      title: "The Whole Word", difficulty: 1, attempted: false, completed: false, 
       description: "The ^ character in a RegEx matches the beginning of a string. The \w means match any word. Add a + after the \w to match 1 or more of the preceding item.",
       stringToSearch: "The raindeer in spain was hit mainly by the plane",
       regEx: "/^\w/",
