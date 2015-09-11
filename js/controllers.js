@@ -33,22 +33,18 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
    $scope.learnPuzzles.forEach(function(puzzle){
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
-         $scope.puzzle = puzzle
+         $scope.puzzle = puzzle;
       } 
    })
 
 
 
-   $scope.regexConverter = function (inputRegEx, isFlags) {
-      console.log("inputRegEx", inputRegEx.guess)
-      if (isFlags) {
-         var splitOnSlashArr = (inputRegEx.guess.split("/"))
-         var flags = splitOnSlashArr[splitOnSlashArr.length -1]
-      }
-
-      console.log(isFlags)
-      // var re = new RegEx("")
-      $scope.input = ""
+   $scope.regexConverter = function (inputRegEx, text) {
+      console.log(text)
+      console.log("inputRegEx", inputRegEx);
+      var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
+      console.log(text.match(re))
+      $scope.matchedString = text.match(re)
    }
    
 }]);   

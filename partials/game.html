@@ -7,7 +7,7 @@
 	<div class="c2">{{puzzle.description}}</div>
 	<div class="c3">{{puzzle.stringToSearch}}</div>
 	<div class="c4">
-		<form ng-submit='regexConverter(input)'>
+		<form ng-submit='regexConverter(input, puzzle.stringToSearch)'>
 			/<input ng-model="input.guess">/
 			<input ng-model="input.flags" style="width: 40px;">
 			<input type="submit" style="position: absolute; left: -9999px"/>
@@ -15,6 +15,3 @@
 	</div>
 </div>
 
-
-
- 
