@@ -9,7 +9,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
          description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type /^\\w/ to find out.",
          stringToSearch: "The rain in spain falls mainly on the plain",
          regEx: "/^\w/",
-         flags: false,
          id: 1
       },
 
@@ -18,7 +17,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
          description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
          stringToSearch: "The raindeer in spain was hit mainly by the plane",
          regEx: "/^\w/",
-         flags: false,
          id: 2
       },
 
@@ -27,7 +25,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
          description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
          stringToSearch: "The raindeer in spain was hit mainly by the plane",
          regEx: "/^\w/",
-         flags: false,
          id: 2
       }
    ]
