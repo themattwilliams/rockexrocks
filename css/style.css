@@ -1,23 +1,35 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	flex: 1 100%;
-
+	max-width: 400px;
+	align-content: center;
 }
 
-.column-one {
+.c1 {
 	background-color: #e67e22;
+	align-items: center;
+
 }
 
+.c1 .r1 {
+	background-color: #16a085;
+	display: flex;
 
-.column-two {
+}
+
+.c1 .r2 {
+	background-color: #3498db;
+	display: flex;
+}
+
+.c2 {
 	background-color: #2ecc71;
 }
 
-.column-three {
+.c3 {
 	background-color: #3498db;
 }
 
-.column-four {
+.c4 {
 	background-color: #ecf0f1;
 }

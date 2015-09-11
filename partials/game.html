@@ -1,13 +1,14 @@
 <h1>Game</h1>
 <div class="container">
-	<div class="column-one">{{puzzle.title}}, Hard: {{puzzle.difficulty}}</div>
-	<div class="column-two">{{puzzle.description}}</div>
-	<div class="column-three">{{puzzle.stringToSearch}}</div>
-	<div class="column-four"></div>
-
-	<div class="puzzle">
-		<p></p>
+	<div class="c1">
+		<span class="r1">{{puzzle.title}}</span>
+		<span class="r2">Hard: {{puzzle.difficulty}}</span>
+	</div>
+	<div class="c2">{{puzzle.description}}</div>
+	<div class="c3">{{puzzle.stringToSearch}}</div>
+	<div class="c4">
+		<form ng-submit='regexConverter(input)'>
+			<input ng-model="input.guess">
+		</form>
 	</div>
 </div>
-
-

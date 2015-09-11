@@ -24,33 +24,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
    $scope.learnPuzzles.forEach(function(puzzle){
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
-         // console.log("YAZTZII")
          $scope.puzzle = puzzle
-      } else {
-         // console.log("puzzle not found")
-      }
+      } 
    })
-   
 
-   // console.log("foo");
 
-   // $scope.foo = "bananagram"
-  //  $scope.contactData = ContactList.contactList;
-  //  $scope.addContact = ContactList.addContact;
- 	// // console.log(ContactList)
-  //  // console.log($scope.newContact,"*********NEWCONTACT**********");
-   
-  //  $scope.saveContact = function () {
-	 //   $scope.addContact({
-	 //   	name: $scope.newContact.cName,
-	 //   	email:$scope.newContact.cEmail,
-	 //   	phone:$scope.newContact.cPhone
-	 //   });
 
-  //  };
-
-  //  $scope.findContact = function (contact) {
-  //  	ContactList.findContact(contact)
-  //  }
+   $scope.regexConverter = function (inputRegEx) {
+      console.log("inputRegEx",inputRegEx)
+      $scope.input = ""
+   }
    
 }]);   
