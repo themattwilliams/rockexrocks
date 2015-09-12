@@ -43,7 +43,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
       var match = text.match(re)
       console.log(match,"*********MATCH**********");
-      $('.c5').removeClass('hide')
+      $('.c5').removeClass('hide').addClass('animated flipInX')
       // var userResult = text.split(match)
       // console.log(userResult,"*********USERRESULT**********");
       // console.log(match, "match")
