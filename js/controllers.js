@@ -6,7 +6,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
    $scope.learnPuzzles = [
        {
          title: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
-         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type /^\\w/ to find out.",
+         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type (^\\w) to find out.",
          stringToSearch: "The rain in spain falls mainly on the plain",
          regEx: "/^\w/",
          id: 1
@@ -40,11 +40,32 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
 
 
    $scope.regexConverter = function (inputRegEx, text) {
-      console.log(text)
-      console.log("inputRegEx", inputRegEx);
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
-      console.log(text.match(re))
-      $scope.matchedString = text.match(re)
+      var match = text.match(re)
+      console.log(match,"*********MATCH**********");
+      $('.c5').removeClass('hide')
+      // var userResult = text.split(match)
+      // console.log(userResult,"*********USERRESULT**********");
+      // console.log(match, "match")
+      // $stringChange(re)
    }
+  
+   // var $stringChange = function(re){
+   //       var oldHTML = $('.c3')[0].innerHTML
+   //       console.log(oldHTML, "oldHTML")
+   //       console.log($('.c3')[0].innerHTML)
+   //       console.log(re,"*********RE**********");
+   //       console.log(re)
+   //       re = new RegExp('([a])','g')
+   //       console.log(re,"*********RE**********");
+
+   //       var newHTML = 'bla bla this is some text this is some text bla bla'.replace(re, "<span class='highlight'>$1</span>");
+   //       console.log(newHTML,"*********NEWHTML**********");
+
+   //      $('.c3')[0].innerHTML = newHTML;
+   // }
+
+
+   
    
 }]);   

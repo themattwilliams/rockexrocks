@@ -10,8 +10,9 @@
 		<form ng-submit='regexConverter(input, puzzle.stringToSearch)'>
 			/<input ng-model="input.guess">/
 			<input ng-model="input.flags" style="width: 40px;">
-			<input type="submit" style="position: absolute; left: -9999px"/>
+			<input type="submit" id="submit" style="position: absolute; left: -9999px"/>
 		</form>
 	</div>
+	<div class="c5 hide">{{puzzle.id}}</div>
 </div>
 
