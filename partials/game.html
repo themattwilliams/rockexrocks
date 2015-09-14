@@ -1,5 +1,7 @@
+<div ng-click="nextPuzzle()">click me</div>
 
-<div class="container animated fadeIn">
+
+<div class="container animated fadeInRight">
 	<div class="c1">
 		<span class="r1">{{puzzle.title}}</span>
 		<span class="r2">Hard: {{puzzle.difficulty}}</span>
@@ -15,5 +17,6 @@
 	</div>
 	<div class="c5 hide">{{userAnswer}}</div>
 	<div class="c6 hide" ng-click="tryAgain()">Click To Try Again!</div>
+	<div class="c7 hide" ng-click="nextPuzzle()">Next Puzzle</div>
 </div>
 

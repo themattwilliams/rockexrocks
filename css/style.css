@@ -59,6 +59,13 @@ span.r2 {
 	
 }
 
+.c7 {
+	background-color: #ecf0f1;
+	padding: 10px;
+	text-align: center;
+	
+}
+
 .hide {
 	visibility: hidden;
 }
@@ -128,6 +135,41 @@ span.r2 {
 		background-color: none;
 	}
 }
+
+@-webkit-keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.fadeOutLeft {
+  -webkit-animation-name: fadeOutLeft;
+  animation-name: fadeOutLeft;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+/*  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;*/
+}
+
+@keyframes fadeOutLeft {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(-25%, 0, 0);
+    transform: translate3d(-25%, 0, 0);
+  }
+}
+
+/*********************************************************************/
 
 
 

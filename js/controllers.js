@@ -1,4 +1,4 @@
-app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", function($scope, $location, $routeParams, $route){
+app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", function($scope, $location, $routeParams, $route, $timeout){
    $scope.changeView = function (view) {
       $location.path(view)
    }
@@ -6,6 +6,17 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    $scope.tryAgain = function () {
       console.log($location.$$path)
       $route.reload()
+   }
+
+   $scope.nextPuzzle = function () {
+      $('.container').addClass('fadeOutLeft')
+      $timeout(function(){
+         var next = parseInt($routeParams.id) + 1
+         next = "/" + next
+         $location.path(next)
+      },500)
+
+
    }
 
    $scope.learnPuzzles = [
@@ -61,6 +72,12 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $(".c4").addClass('wrong')
 
       }
+     setTimeout(function(){
+         if ( $(".c4").hasClass('correct') ){
+            $('.c7').removeClass('hide').addClass('animated fadeInUp')
+         } 
+      }, 760) 
+
      setTimeout(function(){
          if ( $(".c4").hasClass('wrong') ){
             $('.c6').removeClass('hide').addClass('animated fadeInUp')
