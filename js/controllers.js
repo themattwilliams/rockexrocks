@@ -8,7 +8,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
          title: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
          description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type (^\\w) to find out.",
          stringToSearch: "The rain in spain falls mainly on the plain",
-         regEx: "/^\w/",
+         regEx: new RegExp("^\\w",""),
          id: 1
       },
 
@@ -39,15 +39,30 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
 
 
 
-   $scope.regexConverter = function (inputRegEx, text) {
+   $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
+
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
-      var match = text.match(re)
-      console.log(match,"*********MATCH**********");
+            console.log(re,"*********RE**********");
+            console.log(answerToPuzzle,"*********ANSWERTOPUZZLE**********");
+
+      var match = stringToParse.match(re)
+      var answer = stringToParse.match(answerToPuzzle)
       $('.c5').removeClass('hide').addClass('animated flipInX')
-      // var userResult = text.split(match)
-      // console.log(userResult,"*********USERRESULT**********");
-      // console.log(match, "match")
-      // $stringChange(re)
+      $(".c5").text(match)
+
+      if (_.isEqual(match, answer)) {
+          // $(".c4").text("MATCH FOUND");
+          $(".c4").addClass('correct');
+      } else {
+         // $(".c4").text("NOPE!");
+         $(".c4").addClass('wrong')
+
+      }
+     
+      // if( $(".c5").hasClass('animated flipInX')){
+      //    $('.c6').removeClass('hide').addClass('animated bounce')
+      //    $(".c6").text("HI KATE")
+      // } 
    }
   
    // var $stringChange = function(re){

@@ -1,5 +1,5 @@
-<h1>Game</h1>
-<div class="container">
+
+<div class="container animated fadeIn">
 	<div class="c1">
 		<span class="r1">{{puzzle.title}}</span>
 		<span class="r2">Hard: {{puzzle.difficulty}}</span>
@@ -7,12 +7,14 @@
 	<div class="c2">{{puzzle.description}}</div>
 	<div class="c3">{{puzzle.stringToSearch}}</div>
 	<div class="c4">
-		<form ng-submit='regexConverter(input, puzzle.stringToSearch)'>
+		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx)'>
 			/<input ng-model="input.guess">/
 			<input ng-model="input.flags" style="width: 40px;">
 			<input type="submit" id="submit" style="position: absolute; left: -9999px"/>
 		</form>
 	</div>
 	<div class="c5 hide">{{puzzle.id}}</div>
+	<div class="c6 hide">{{puzzle.id}}</div>
+	<div class="c6 ">{{puzzle.regEx}}</div>
 </div>
 

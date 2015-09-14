@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	max-width: 400px;
+	margin-top: 40px;
 }
 
 div.c1 {
@@ -45,7 +46,14 @@ span.r2 {
 }
 
 .c5 {
-	background-color: #16a085;
+	/*background-color: #16a085;*/
+	padding: 10px;
+	text-align: center;
+	
+}
+
+.c6 {
+	background-color: coral;
 	padding: 10px;
 	text-align: center;
 	
@@ -53,6 +61,72 @@ span.r2 {
 
 .hide {
 	visibility: hidden;
+}
+
+.correct {
+  -webkit-animation-name: correct;
+  animation-name: correct;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes correct {
+	0% {
+		background-color: none;
+	}
+	10% {
+		background-color: green;
+	}
+	60% {
+		background-color: none;
+	}
+}
+
+@keyframes correct {
+	0% {
+		background-color: none;
+	}
+	10% {
+		background-color: green;
+	}
+	60% {
+		background-color: none;
+	}
+}
+
+.wrong {
+  -webkit-animation-name: wrong;
+  animation-name: wrong;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes wrong {
+	0% {
+		background-color: none;
+	}
+	10% {
+		background-color: red;
+	}
+	60% {
+		background-color: none;
+	}
+}
+
+@keyframes wrong {
+	0% {
+		background-color: none;
+	}
+	10% {
+		background-color: red;
+	}
+	60% {
+		background-color: none;
+	}
 }
 
 
