@@ -1,6 +1,11 @@
-app.controller('RegExController', ["$scope", "$location", "$routeParams", function($scope, $location, $routeParams){
+app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", function($scope, $location, $routeParams, $route){
    $scope.changeView = function (view) {
       $location.path(view)
+   }
+
+   $scope.tryAgain = function () {
+      console.log($location.$$path)
+      $route.reload()
    }
 
    $scope.learnPuzzles = [
@@ -48,39 +53,20 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", functi
       var match = stringToParse.match(re)
       var answer = stringToParse.match(answerToPuzzle)
       $('.c5').removeClass('hide').addClass('animated flipInX')
-      $(".c5").text(match)
+      $scope.userAnswer = "Your RegEx Returns: " + match
 
       if (_.isEqual(match, answer)) {
-          // $(".c4").text("MATCH FOUND");
-          $(".c4").addClass('correct');
+            $(".c4").addClass('correct');
       } else {
-         // $(".c4").text("NOPE!");
          $(".c4").addClass('wrong')
 
       }
-     
-      // if( $(".c5").hasClass('animated flipInX')){
-      //    $('.c6').removeClass('hide').addClass('animated bounce')
-      //    $(".c6").text("HI KATE")
-      // } 
+     setTimeout(function(){
+         if ( $(".c4").hasClass('wrong') ){
+            $('.c6').removeClass('hide').addClass('animated fadeInUp')
+         } 
+      }, 760)
    }
-  
-   // var $stringChange = function(re){
-   //       var oldHTML = $('.c3')[0].innerHTML
-   //       console.log(oldHTML, "oldHTML")
-   //       console.log($('.c3')[0].innerHTML)
-   //       console.log(re,"*********RE**********");
-   //       console.log(re)
-   //       re = new RegExp('([a])','g')
-   //       console.log(re,"*********RE**********");
 
-   //       var newHTML = 'bla bla this is some text this is some text bla bla'.replace(re, "<span class='highlight'>$1</span>");
-   //       console.log(newHTML,"*********NEWHTML**********");
-
-   //      $('.c3')[0].innerHTML = newHTML;
-   // }
-
-
-   
    
 }]);   
