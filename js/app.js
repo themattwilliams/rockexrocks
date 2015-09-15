@@ -1,4 +1,4 @@
-var app = angular.module("RegExApp", ['ngRoute']);
+var app = angular.module("RegExApp", ['ngRoute', 'ngAnimate']);
 app.config(['$routeProvider', '$httpProvider',  function($routeProvider, $httpProvider) {
     // $httpProvider.defaults.withCredentials = true;
     $routeProvider
