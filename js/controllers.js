@@ -15,9 +15,19 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          next = "/" + next
          $location.path(next)
       },500)
-
-
    }
+
+   $scope.hoverEnter = function(){
+       this.hoverOn = true;
+       console.log("foo");
+   };
+
+   $scope.hoverExit = function(){
+       this.hoverOn = false;
+       console.log("bar");
+   };
+
+
 
    $scope.learnPuzzles = [
        {
@@ -84,6 +94,5 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          } 
       }, 760)
    }
-
    
 }]);   

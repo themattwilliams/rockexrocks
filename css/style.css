@@ -170,11 +170,28 @@ span.r2 {
 }
 
 /*********************************************************************/
+#hamburger {
+	padding: 10px;
+	text-align: right;
+	color: blue;
+}	
+
 #menu {
 	padding: 10px;
 	text-align: right;
 	color: blue;
 }	
+
+.flex-menu-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.flex-menu {
+   padding: 10px;
+   /*text-align: right;*/
+   color: blue;
+}
 
 .fa-3x {
   font-size: 2em !important;
