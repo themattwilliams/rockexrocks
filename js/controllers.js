@@ -66,10 +66,10 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       $('.c5').removeClass('hide').addClass('animated flipInX')
       $scope.userAnswer = "Your RegEx Returns: " + match
 
-      if (_.isEqual(match, answer)) {
-            $(".c4").addClass('correct');
+      if (_.isEqual(match, answer) && match !== null) {
+         $(".c4").addClass('correct');
       } else {
-         $(".c4").addClass('wrong')
+         $(".c4").addClass('wrong');
 
       }
      setTimeout(function(){
