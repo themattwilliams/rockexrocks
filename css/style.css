@@ -1,3 +1,7 @@
+body {
+	background-color: #DBFCFF;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -7,60 +11,68 @@
 
 div.c1 {
 	display: flex;
-	background: lightblue;
+	background: #127C22;
+	font-family: 'Bangers', cursive;
 	width: 100%;
 	justify-content: space-around;
 	
 }
 
 span.r1 {
-	background: grey;
+	background: #127C22;
+	color: black;
 	align-self: center;
 	padding: 10px;
 	flex-grow: 2;
 	text-align: center;
 	margin-left: 17%;
+	font-size: 1.5em;
+
 
 }
 
 span.r2 {
-	background: deeppink;
+	background: #127C22;
 	align-self: center;
 	padding: 10px;
 }
 
 .c2 {
-	background-color: #2ecc71;
+	background-color: #FFBAAA;
 	padding: 10px;
+	
+
 }
 
 .c3 {
-	background-color: #3498db;
+	background-color: #FFBAAA;
 	padding: 10px;
 }
 
 .c4 {
-	background-color: #ecf0f1;
+	background-color: #5D94FB;
+	/*#ecf0f1*/
+
 	padding: 10px;
 	text-align: center;
 }
 
 .c5 {
-	background-color: #ecf0f1;
+	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
 	
 }
 
 .c6 {
-	background-color: #ecf0f1;
+	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
 	
 }
 
 .c7 {
-	background-color: #ecf0f1;
+	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
 	
@@ -84,7 +96,7 @@ span.r2 {
 		background-color: none;
 	}
 	10% {
-		background-color: green;
+		background-color: #127C22;
 	}
 	60% {
 		background-color: none;
@@ -96,7 +108,7 @@ span.r2 {
 		background-color: none;
 	}
 	10% {
-		background-color: green;
+		background-color: #127C22;
 	}
 	60% {
 		background-color: none;
@@ -173,13 +185,13 @@ span.r2 {
 #hamburger {
 	padding: 10px;
 	text-align: right;
-	color: blue;
+	color: #CC4B09;
 }	
 
 #menu {
 	padding: 10px;
 	text-align: right;
-	color: blue;
+	color: #CC4B09;
 }	
 
 .flex-menu-container {
@@ -190,7 +202,7 @@ span.r2 {
 .flex-menu {
    padding: 10px;
    /*text-align: right;*/
-   color: blue;
+   color: #CC4B09;
 }
 
 .fa-3x {
@@ -204,11 +216,6 @@ span.r2 {
   transition:all linear .3s;
   opacity:1;
 }
- 
-/*.animate-show.ng-hide-add,
-.animate-show.ng-hide-remove {
-  display:block!important;
-}*/
  
 .animate-show.ng-hide {
   opacity:0;

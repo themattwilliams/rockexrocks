@@ -1,3 +1,19 @@
+  <!-- Modal Trigger -->
+  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
+          
+
+
 <div class="flex-menu-container">
 	<div class="flex-menu" ng-mouseover="hoverEnter()" ng-mouseleave="hoverExit()">
 		<span>
@@ -12,22 +28,22 @@
 	</div>
 </div>
 
-<div class="container animated fadeInRight">
+<div class="container animated fadeInRight ">
 	<div class="c1">
 		<span class="r1">{{puzzle.title}}</span>
 		<span class="r2">Hard: {{puzzle.difficulty}}</span>
 	</div>
 	<div class="c2">{{puzzle.description}}</div>
 	<div class="c3">{{puzzle.stringToSearch}}</div>
-	<div class="c4">
+	<div class="c4 z-depth-3">
 		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx)'>
 			/<input ng-model="input.guess">/
 			<input ng-model="input.flags" style="width: 40px;">
 			<input type="submit" id="submit" style="position: absolute; left: -9999px"/>
 		</form>
 	</div>
-	<div class="c5 hide">{{userAnswer}}</div>
-	<div class="c6 hide" ng-click="tryAgain()">Click To Try Again!</div>
+	<div class="c5 hide z-depth-3">{{userAnswer}}</div>
+	<div class="c6 hide z-depth-3" ng-click="tryAgain()">Click To Try Again!</div>
 	<div class="c7 hide" ng-click="nextPuzzle()">Next Puzzle</div>
 </div>
 
