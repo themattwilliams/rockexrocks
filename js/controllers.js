@@ -17,16 +17,63 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       },500)
    }
 
+     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+     $('.modal-trigger').leanModal();
+
+ // MENU ********************************
+
    $scope.hoverEnter = function(){
        this.hoverOn = true;
-       console.log("foo");
+       // console.log("foo");   
    };
 
    $scope.hoverExit = function(){
        this.hoverOn = false;
-       console.log("bar");
+       // console.log("bar");
    };
 
+   $('#home').hover(function() {
+   /* Stuff to do when the mouse enters the element */
+      console.log(this)
+      $('#home').css("color","#127C22")
+
+   }, function() {
+      /* Stuff to do when the mouse leaves the element */
+     $('#home').css("color","#CC4B09")
+   });
+
+   $('#learn').hover(function() {
+   /* Stuff to do when the mouse enters the element */
+      console.log(this)
+      $('#learn').css("color","#127C22")
+      
+   }, function() {
+      /* Stuff to do when the mouse leaves the element */
+     $('#learn').css("color","#CC4B09")
+   });
+
+   $('#gamepad').hover(function() {
+   /* Stuff to do when the mouse enters the element */
+      console.log(this)
+      $('#gamepad').css("color","#127C22")
+      
+   }, function() {
+      /* Stuff to do when the mouse leaves the element */
+     $('#gamepad').css("color","#CC4B09")
+   });
+
+   $('#question').hover(function() {
+   /* Stuff to do when the mouse enters the element */
+      console.log(this)
+      $('#question').css("color","#127C22")
+      
+   }, function() {
+      /* Stuff to do when the mouse leaves the element */
+     $('#question').css("color","#CC4B09")
+   });
+
+
+   // MENU ********************************
 
 
    $scope.learnPuzzles = [
