@@ -24,6 +24,30 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
      $('.modal-trigger').leanModal();
 
+   if ($( window ).width() < 800) {
+       $(".container").css("width", "60%")
+       $(".container").css("margin-left", "15%")
+       $(".container").css("margin-right", "15%")
+   };
+
+
+   $(window).resize(function(event) {
+
+     console.log( $( window ).width() )
+     if ($( window ).width() < 800) {
+         $(".container").css("width", "60%")
+         $(".container").css("margin-left", "20%")
+         $(".container").css("margin-right", "20%")
+     };
+
+     if ($( window ).width() > 800) {
+         $(".container").css("width", "40%")
+         $(".container").css("margin-left", "30%")
+         $(".container").css("margin-right", "30%")
+     };
+
+   });  
+
  // MENU ********************************
 
    $scope.hoverEnter = function(){
@@ -92,7 +116,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    $scope.learnPuzzles = [
        {
          title: "In The Beginning", difficulty: 1, attempted: false, completed: false, 
-         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type (^\\w) to find out.",
+         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type ^\\w to find out.",
          stringToSearch: "The rain in spain falls mainly on the plain",
          regEx: new RegExp("^\\w",""),
          id: 1
@@ -102,7 +126,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          title: "The Whole Word", difficulty: 1, attempted: false, completed: false, 
          description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
          stringToSearch: "The raindeer in spain was hit mainly by the plane",
-         regEx: "/^\w/",
+         regEx: new RegExp("/^\w/+"),
          id: 2
       },
 
@@ -110,7 +134,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          title: "Grabs all opening words", difficulty: 1, attempted: false, completed: false, 
          description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
          stringToSearch: "The raindeer in spain was hit mainly by the plane",
-         regEx: "/^\w/",
+         regEx: new RegExp("/^\w/"),
          id: 2
       }
    ]
