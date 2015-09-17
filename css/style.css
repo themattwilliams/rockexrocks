@@ -8,14 +8,17 @@ body {
 	max-width: 400px;
 	margin-top: 5px;
 }
-
 div.c1 {
 	display: flex;
 	background: #127C22;
 	font-family: 'Bangers', cursive;
 	width: 100%;
 	justify-content: space-around;
-	
+	/*border-radius: 25px;*/
+	border: 2px solid;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	/*border-top-left-radius: 2em 0.5em;*/
 }
 
 span.r1 {
@@ -35,12 +38,13 @@ span.r2 {
 	background: #127C22;
 	align-self: center;
 	padding: 10px;
+	border-top-right-radius: 25px;
 }
 
 .c2 {
 	background-color: #FFBAAA;
 	padding: 10px;
-	
+	max-width: 400px;
 
 }
 
@@ -55,26 +59,34 @@ span.r2 {
 
 	padding: 10px;
 	text-align: center;
+/*	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;*/
 }
 
 .c5 {
 	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
-	
+/*	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-radius: 25px;*/
 }
 
 .c6 {
 	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
-	
+/*	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;*/
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
 }
 
 .c7 {
 	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
+
 	
 }
 
@@ -220,6 +232,47 @@ span.r2 {
 .animate-show.ng-hide {
   opacity:0;
 }
+
+/*MOVING BACKGROUND ***************************************************/
+
+#scroll{
+	zoom: 25%;
+	width: 10000px;
+	height: 500px;
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+    background: #2980b9 url('../images/game-scroll.jpg') repeat 0 0;
+	-webkit-animation: 30s linear 0s normal none infinite animate;
+	-moz-animation: 30s linear 0s normal none infinite animate;
+	-ms-animation: 30s linear 0s normal none infinite animate;
+	-o-animation: 30s linear 0s normal none infinite animate;
+	animation: 30s linear 0s normal none infinite animate;
  
-
-
+}
+ 
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}

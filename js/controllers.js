@@ -5,7 +5,11 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.tryAgain = function () {
       console.log($location.$$path)
-      $route.reload()
+      $('.container').addClass('fadeOutLeft')
+      $timeout(function(){
+         $route.reload()
+      },500)
+      
    }
 
    $scope.nextPuzzle = function () {
@@ -24,6 +28,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.hoverEnter = function(){
        this.hoverOn = true;
+       navHover();
        // console.log("foo");   
    };
 
@@ -32,45 +37,53 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
        // console.log("bar");
    };
 
-   $('#home').hover(function() {
-   /* Stuff to do when the mouse enters the element */
-      console.log(this)
-      $('#home').css("color","#127C22")
+   var navHover = function () {
+      $('#home').hover(function() {
+      /* Stuff to do when the mouse enters the element */
+         console.log(this)
+         $('#home').css("color","#127C22")
 
-   }, function() {
-      /* Stuff to do when the mouse leaves the element */
-     $('#home').css("color","#CC4B09")
-   });
+      }, function() {
+         /* Stuff to do when the mouse leaves the element */
+        $('#home').css("color","#CC4B09")
+      });
 
-   $('#learn').hover(function() {
-   /* Stuff to do when the mouse enters the element */
-      console.log(this)
-      $('#learn').css("color","#127C22")
-      
-   }, function() {
-      /* Stuff to do when the mouse leaves the element */
-     $('#learn').css("color","#CC4B09")
-   });
+      $('#home').click(function(event) {
+         /* Act on the event */
+         console.log("foobar")
+         $location.path('/allPuzzles')
+      });
 
-   $('#gamepad').hover(function() {
-   /* Stuff to do when the mouse enters the element */
-      console.log(this)
-      $('#gamepad').css("color","#127C22")
-      
-   }, function() {
-      /* Stuff to do when the mouse leaves the element */
-     $('#gamepad').css("color","#CC4B09")
-   });
+      $('#learn').hover(function() {
+      /* Stuff to do when the mouse enters the element */
+         console.log(this)
+         $('#learn').css("color","#127C22")
+         
+      }, function() {
+         /* Stuff to do when the mouse leaves the element */
+        $('#learn').css("color","#CC4B09")
+      });
 
-   $('#question').hover(function() {
-   /* Stuff to do when the mouse enters the element */
-      console.log(this)
-      $('#question').css("color","#127C22")
-      
-   }, function() {
-      /* Stuff to do when the mouse leaves the element */
-     $('#question').css("color","#CC4B09")
-   });
+      $('#gamepad').hover(function() {
+      /* Stuff to do when the mouse enters the element */
+         console.log(this)
+         $('#gamepad').css("color","#127C22")
+         
+      }, function() {
+         /* Stuff to do when the mouse leaves the element */
+        $('#gamepad').css("color","#CC4B09")
+      });
+
+      $('#question').hover(function() {
+      /* Stuff to do when the mouse enters the element */
+         console.log(this)
+         $('#question').css("color","#127C22")
+         
+      }, function() {
+         /* Stuff to do when the mouse leaves the element */
+        $('#question').css("color","#CC4B09")
+      });
+   }
 
 
    // MENU ********************************
@@ -137,7 +150,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
      setTimeout(function(){
          if ( $(".c4").hasClass('wrong') ){
-            $('.c6').removeClass('hide').addClass('animated fadeInUp')
+            $('.c6').removeClass('hide').addClass('animated flipInX')
          } 
       }, 760)
    }

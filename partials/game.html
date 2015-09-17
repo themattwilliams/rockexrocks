@@ -1,5 +1,3 @@
-  <!-- Modal Trigger -->
-  <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
@@ -11,7 +9,7 @@
       <p>enter stuff to do good things</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Let Me Play!!</a>
+      <a ng-href="#{{puzzle.id}}" class="modal-action modal-close waves-effect waves-green btn-flat ">Let Me Play!!</a>
     </div>
   </div>
           
@@ -21,7 +19,7 @@
 	<div class="flex-menu" ng-mouseover="hoverEnter()" ng-mouseleave="hoverExit()">
 		<span>
 			<i ng-show="hoverOn" class="fa fa-home fa-3x animate-show" id="home"></i>
-			<i ng-show="hoverOn" class="fa fa-question-circle fa-3x animate-show" id="question"></i>
+			<i ng-show="hoverOn" class="fa fa-question-circle fa-3x animate-show modal-trigger" id="question" href="#modal1"></i>
 			<i ng-show="hoverOn" class="fa fa-gamepad fa-3x animate-show" id="gamepad"></i>
 			<i ng-show="hoverOn" class="fa fa-graduation-cap fa-3x animate-show" id="learn"></i>
 		</span>
@@ -31,7 +29,7 @@
 	</div>
 </div>
 
-<div class="container animated fadeInRight ">
+<div class="container animated fadeInRight">
 	<div class="c1">
 		<span class="r1">{{puzzle.title}}</span>
 		<span class="r2">Hard: {{puzzle.difficulty}}</span>
@@ -49,4 +47,6 @@
 	<div class="c6 hide z-depth-3" ng-click="tryAgain()">Click To Try Again!</div>
 	<div class="c7 hide" ng-click="nextPuzzle()">Next Puzzle</div>
 </div>
+
+<div id="scroll"></div>
 
