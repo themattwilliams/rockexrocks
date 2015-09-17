@@ -1,3 +1,50 @@
+/*MOVING BACKGROUND ***************************************************/
+
+#scroll{
+	position: fixed;
+	bottom: 0;
+	zoom: 25%;
+	width: 10000px;
+	height: 500px;
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+    background: #2980b9 url('../images/game-scroll.jpg') repeat 0 0;
+	-webkit-animation: 30s linear 0s normal none infinite animate;
+	-moz-animation: 30s linear 0s normal none infinite animate;
+	-ms-animation: 30s linear 0s normal none infinite animate;
+	-o-animation: 30s linear 0s normal none infinite animate;
+	animation: 30s linear 0s normal none infinite animate;
+ 
+}
+ 
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+/**/
+
 body {
 	background-color: #DBFCFF;
 }
@@ -233,46 +280,3 @@ span.r2 {
   opacity:0;
 }
 
-/*MOVING BACKGROUND ***************************************************/
-
-#scroll{
-	zoom: 25%;
-	width: 10000px;
-	height: 500px;
-	margin:0;
-	padding:0;
-	font-family:"arial",heletica,sans-serif;
-	font-size:12px;
-    background: #2980b9 url('../images/game-scroll.jpg') repeat 0 0;
-	-webkit-animation: 30s linear 0s normal none infinite animate;
-	-moz-animation: 30s linear 0s normal none infinite animate;
-	-ms-animation: 30s linear 0s normal none infinite animate;
-	-o-animation: 30s linear 0s normal none infinite animate;
-	animation: 30s linear 0s normal none infinite animate;
- 
-}
- 
-@-webkit-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: -800px 0;}
-}
- 
-@-moz-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: -800px 0;}
-}
- 
-@-ms-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: -800px 0;}
-}
- 
-@-o-keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: -800px 0;}
-}
- 
-@keyframes animate {
-	from {background-position:0 0;}
-	to {background-position: -800px 0;}
-}
