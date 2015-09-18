@@ -120,7 +120,7 @@ span.r2 {
 }
 
 .c5 {
-	z-index: 100;
+	/*z-index: 100;*/
 	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
@@ -130,7 +130,7 @@ span.r2 {
 }
 
 .c6 {
-	z-index: 100;
+	/*z-index: 100;*/
 	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
@@ -144,8 +144,8 @@ span.r2 {
 	background-color: #5D94FB;
 	padding: 10px;
 	text-align: center;
-
-	
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
 }
 
 .hide {

@@ -168,7 +168,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       }
      setTimeout(function(){
          if ( $(".c4").hasClass('correct') ){
-            $('.c7').removeClass('hide').addClass('animated fadeInUp')
+            $('.c7').removeClass('hide').addClass('animated flipInX')
          } 
       }, 760) 
 
