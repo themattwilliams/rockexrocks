@@ -19,3 +19,8 @@ app.config(['$routeProvider', '$httpProvider',  function($routeProvider, $httpPr
       //   controller: 'ShowController'
       // })
 }])
+
+app.constant("neverChange", {
+	"twizzle": "foobaribannagram",
+	"sticks": "5"
+});
