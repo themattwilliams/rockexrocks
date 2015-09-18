@@ -1,11 +1,7 @@
-app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "neverChange", function($scope, $location, $routeParams, $route, $timeout, neverChange){
+app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", function($scope, $location, $routeParams, $route, $timeout, learningMode){
    $scope.changeView = function (view) {
       $location.path(view)
    }
-
-   console.log(neverChange)
-   console.log(neverChange.twizzle)
-   console.log(neverChange.sticks)
 
    $scope.tryAgain = function () {
       console.log($location.$$path)
@@ -118,43 +114,42 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
 
 
-   $scope.learnPuzzles = [
-       {
-         title: "In The Beginning", difficulty: 1, 
-         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type ^\\w to find out.",
-         stringToSearch: "The rain in spain falls mainly on the plain",
-         regEx: new RegExp("^\\w",""),
-         id: 1,
-         attempted: false, completed: false
-      },
+   // $scope.learnPuzzles = [
+   //     {
+   //       title: "In The Beginning", difficulty: 1, 
+   //       description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Taken together, what should happen? Type ^\\w to find out.",
+   //       stringToSearch: "The rain in spain falls mainly on the plain",
+   //       regEx: new RegExp("^\\w",""),
+   //       id: 1,
+   //       attempted: false, completed: false
+   //    },
 
-      {
-         title: "The Whole Word", difficulty: 1, 
-         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
-         stringToSearch: "The raindeer in spain was hit mainly by the plane",
-         regEx: new RegExp("/^\\w/+"),
-         id: 2,
-         attempted: false, completed: false
-      },
+   //    {
+   //       title: "The Whole Word", difficulty: 1, 
+   //       description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
+   //       stringToSearch: "The raindeer in spain was hit mainly by the plane",
+   //       regEx: new RegExp("/^\\w/+"),
+   //       id: 2,
+   //       attempted: false, completed: false
+   //    },
 
-      {
-         title: "Grabs all opening words", difficulty: 1, 
-         description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
-         stringToSearch: "The raindeer in spain was hit mainly by the plane",
-         regEx: new RegExp("/^\\w/"),
-         id: 2,
-         attempted: false, completed: false
-      }
-   ]
+   //    {
+   //       title: "Grabs all opening words", difficulty: 1, 
+   //       description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
+   //       stringToSearch: "The raindeer in spain was hit mainly by the plane",
+   //       regEx: new RegExp("/^\\w/"),
+   //       id: 2,
+   //       attempted: false, completed: false
+   //    }
+   // ]
 
 
-   $scope.learnPuzzles.forEach(function(puzzle){
+   learningMode.forEach(function(puzzle){
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
          $scope.puzzle = puzzle;
       } 
    })
-
 
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {

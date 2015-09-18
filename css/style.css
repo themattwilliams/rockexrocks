@@ -291,3 +291,7 @@ span.r2 {
   opacity:0;
 }
 
+.angular-with-newlines {
+    white-space: pre-wrap;
+}
+

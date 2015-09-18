@@ -20,7 +20,4 @@ app.config(['$routeProvider', '$httpProvider',  function($routeProvider, $httpPr
       // })
 }])
 
-app.constant("neverChange", {
-	"twizzle": "foobaribannagram",
-	"sticks": "5"
-});
+

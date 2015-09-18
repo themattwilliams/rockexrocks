@@ -35,7 +35,7 @@
 		<span class="r2">Hard: {{puzzle.difficulty}}</span>
 	</div>
 	<div class="c2">{{puzzle.description}}</div>
-	<div class="c3">{{puzzle.stringToSearch}}</div>
+	<div class="c3 angular-with-newlines">{{puzzle.stringToSearch}}</div>
 	<div class="c4 z-depth-3">
 		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx)'>
 			/<input ng-model="input.guess">/
