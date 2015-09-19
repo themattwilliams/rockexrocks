@@ -163,7 +163,12 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       var match = stringToParse.match(re)
       var answer = stringToParse.match(answerToPuzzle)
       $('.c5').removeClass('hide').addClass('animated flipInX')
-      $scope.userAnswer = "Your RegEx Returns: " + match
+      if (match) {
+         $scope.userAnswer = "Your RegEx Returns: " + match
+      } else {
+         $scope.userAnswer = "Ruh Roh! Your RegEx didn't return anything!"
+      }
+      
 
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
