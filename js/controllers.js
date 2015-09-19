@@ -11,8 +11,10 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       $timeout(function(){
          $route.reload()
       },500)
-      
    }
+
+   // if enter is pressed, console.log foo
+
 
    $scope.nextPuzzle = function () {
       $('.container').addClass('fadeOutLeft')
@@ -22,6 +24,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $location.path(next)
       },500)
    }
+
+   $scope.keypressAction = function(){
+      if ($('.c6').hasClass('animated flipInX')) {
+         $scope.tryAgain();
+      }
+      if ($('.c7').hasClass('animated flipInX')) {
+         $scope.nextPuzzle();
+      }
+   };
 
      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
      $('.modal-trigger').leanModal();
@@ -124,6 +135,21 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $scope.puzzle = puzzle;
       } 
    })
+
+   // if ($routeParams.id > 1000) {
+   //    console.log($('#learnMode'))
+   //    $('#learnMode').css({
+   //       '-webkit-animation': '5s linear 0s normal none infinite animate;',
+   //       '-moz-animation': '5s linear 0s normal none infinite animate;',
+   //       'animation': '5s linear 0s normal none infinite animate;'
+   //    });
+   //   // -webkit-animation: 15s linear 0s normal none infinite animate;
+   //   // -moz-animation: 15s linear 0s normal none infinite animate;
+   //   // -ms-animation: 15s linear 0s normal none infinite animate;
+   //   // -o-animation: 15s linear 0s normal none infinite animate;
+   //   // animation: 15s linear 0s normal none infinite animate;
+
+   // }
 
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
