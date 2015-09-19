@@ -2,6 +2,8 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    $scope.changeView = function (view) {
       $location.path(view)
    }
+   // $scope.name = 'Superhero';
+   // $scope.my_html = '<label><b>Hello </b> <input type="text" value="world !"></label>';
 
    $scope.tryAgain = function () {
       console.log($location.$$path)

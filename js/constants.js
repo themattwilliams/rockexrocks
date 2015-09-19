@@ -10,21 +10,12 @@ app.constant("learningMode", [
 
   {
      title: "The Whole Word", difficulty: 1, 
-     description: "The ^ character in a RegEx matches the beginning of a string. The \\w means match any word. Add a + after the \\w to match 1 or more of the preceding item.",
+     description: "Add a ^ character in a RegEx to match the beginning of a string. The \\w means match any word character (alphanumberic). Add a + after the \\w to match 1 or more of the preceding item.",
      stringToSearch: "The raindeer in spain was hit mainly by the plane",
      regEx: new RegExp("^\\w+",""),
      id: 2,
      attempted: false, completed: false
   },
-
-  // {
-  //    title: "Grabs all opening words", difficulty: 1, 
-  //    description: "Using the ^ to match the beginning added with the \\w+ to match the first full word, add a gm in the flags section on the right. See what happened when you ran it?",
-  //    stringToSearch: "The raindeer in spain was hit mainly by the plane \l foo",
-  //    regEx: new RegExp("^\\w+","mg"),
-  //    id: 3,
-  //    attempted: false, completed: false
-  // },
 
   {
      title: "Get all word-like characters", difficulty: 1, 
@@ -37,7 +28,7 @@ app.constant("learningMode", [
 
   {
      title: "Get all word-like characters", difficulty: 1, 
-     description: "Now just grab entire words. Type [\\w] then add a + after the brackets to match entire words. Keep a g flag in the right box to match everything 'globally'",
+     description: "Now just grab entire words. Type <font color='#CC4B09'> [\\w] </font> then add a <font color='#CC4B09'> + </font> after the brackets to match entire words. Keep a <font color='#CC4B09'> g </font> flag in the <font-weight: bolder;> right box </font> to match everything 'globally'",
      stringToSearch: "Come with me if you want to live",
      regEx: new RegExp("[\\w]+","g"),
      id: 4,
@@ -46,7 +37,7 @@ app.constant("learningMode", [
 
   {
      title: "Get all word-like characters", difficulty: 1, 
-     description: "Now just grab the first entire word. Remember how? Type ^ for first item, then [\\w]+ after the brackets to match entire words. Keep a g flag.",
+     description: "Now just grab the first entire word. Remember how? Type ^ for first item, then [\\w]+ after the brackets to match entire words.",
      stringToSearch: "Come with me if you want to live",
      regEx: new RegExp("^[\\w]+","g"),
      id: 5,
