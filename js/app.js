@@ -14,7 +14,7 @@ app.config(['$routeProvider', '$httpProvider',  function($routeProvider, $httpPr
         templateUrl: '/partials/game.html',
         controller: 'RegExController'
       })
-      // .when('/show/:id', {
+      // .when('/game/:id', {
       //   templateUrl: '/partials/show.html',
       //   controller: 'ShowController'
       // })

@@ -54,7 +54,7 @@ body {
 .container {
 	display: flex;
 	flex-direction: column;
-	max-width: 400px;
+	max-width: 500px;
 	margin-top: 5px;
 	z-index: 2;
 	vertical-align: center;
@@ -99,7 +99,7 @@ span.r2 {
 .c2 {
 	background-color: #FFBAAA;
 	padding: 10px;
-	max-width: 400px;
+	max-width: 500px;
 
 }
 

@@ -1,7 +1,7 @@
 app.constant("learningMode", [
    {
      title: "In The Beginning", difficulty: 1, 
-     description: "The <font color='#CC4B09'> ^ </font> character in a RegEx matches the beginning of a string. The <font color='#CC4B09'> \\w </font> means match any word. Taken together, what should happen? Type <font color='#CC4B09'> ^\\w </font> to find out.",
+     description: "The <font color='#CC4B09'> ^ </font> character in a RegEx matches the beginning of a string. The <font color='#CC4B09'> \\w </font> means match any word character. Taken together, what should happen? Type <font color='#CC4B09'> ^\\w </font> to find out.",
      stringToSearch: "The rain in spain falls mainly on the plain",
      regEx: new RegExp("^\\w",""),
      id: 1,
@@ -97,5 +97,109 @@ app.constant("learningMode", [
      id: 11,
      attempted: false, completed: false
   }
+
+]);
+// ####################################################################################################################################################################################################
+
+app.constant("gameMode", [
+	 {
+	   title: "In The Beginning", difficulty: 1, 
+	   description: "Select only the first character of the string",
+	   stringToSearch: "The rain in spain falls mainly on the plain",
+	   regEx: new RegExp("^\\w",""),
+	   id: 1001,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "The Whole Word", difficulty: 1, 
+	   description: "Select only the entire first word",
+	   stringToSearch: "The raindeer in spain was hit mainly by the plane",
+	   regEx: new RegExp("^\\w+",""),
+	   id: 1002,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Get all word-like characters", difficulty: 1, 
+	   description: "select all word characters separately",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("[\\w]","g"),
+	   id: 1003,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Get all word-like characters", difficulty: 1, 
+	   description: "Select all word",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("[\\w]+","g"),
+	   id: 1004,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Get all word-like characters", difficulty: 1, 
+	   description: "Select the first entire word",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("^[\\w]+","g"),
+	   id: 1005,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Get all word-like characters", difficulty: 1, 
+	   description: "Now just grab the LAST entire word",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("[\\w]+$",""),
+	   id: 1006,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Gimme da capppsss", difficulty: 1, 
+	   description: "Now, grab only all the capital letters everywhere!",
+	   stringToSearch: "Aziz! Light! Much better. Thank you, Aziz.",
+	   regEx: new RegExp("[A-Z]","g"),
+	   id: 1007,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Lower case letters 4ever", difficulty: 1, 
+	   description: "Now, grab only all the lower letters everywhere!",
+	   stringToSearch: "Aziz! Light! Much better. Thank you, Aziz.",
+	   regEx: new RegExp("[a-z]","g"),
+	   id: 1008,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Mind Blown!", difficulty: 1, 
+	   description: "Grab all alphanumberic characters",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("[A-Za-z0-9_]",""),
+	   id: 1009,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Mind Blown: First Word!", difficulty: 1, 
+	   description: "select the entire first word",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("[A-Za-z0-9_]+",""),
+	   id: 1010,
+	   attempted: false, completed: false
+	},
+
+	{
+	   title: "Mind Blown: Last Word! ", difficulty: 1, 
+	   description: "Select the entire last word",
+	   stringToSearch: "Come with me if you want to live",
+	   regEx: new RegExp("[A-Za-z0-9_]+$",""),
+	   id: 1011,
+	   attempted: false, completed: false
+	}
+
 
 ]);

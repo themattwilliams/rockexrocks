@@ -19,8 +19,8 @@
 		<span>
 			<i ng-show="hoverOn" class="fa fa-home fa-3x animate-show" id="home"></i>
 			<i ng-show="hoverOn" class="fa fa-question-circle fa-3x animate-show modal-trigger" id="question" href="#modal1"></i>
-			<i ng-show="hoverOn" class="fa fa-gamepad fa-3x animate-show" id="gamepad"></i>
-			<i ng-show="hoverOn" class="fa fa-graduation-cap fa-3x animate-show" id="learn"></i>
+			<i ng-show="hoverOn" class="fa fa-gamepad fa-3x animate-show" id="gamepad" ng-click="changeView(1001)"></i>
+			<i ng-show="hoverOn" class="fa fa-graduation-cap fa-3x animate-show" id="learn" ng-click="changeView(1)"></i>
 		</span>
 		<span id="hamburger">
 			<i class="fa fa-bars fa-3x"></i>
@@ -34,7 +34,7 @@
 		<span class="r2">Hard: {{puzzle.difficulty}}</span>
 	</div>
 	<div class="c2" ng-bind-html="puzzle.description | to_trusted"></div>
-	<div class="c3 angular-with-newlines">{{puzzle.stringToSearch}}</div>
+	<div class="c3 angular-with-newlines" style="color:blue;">{{puzzle.stringToSearch}}</div>
 	<div class="c4 z-depth-3">
 		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx)'>
 			/<input ng-model="input.guess">/
