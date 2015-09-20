@@ -1,7 +1,7 @@
 app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject){
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
    var syncObject = $firebaseObject(ref);
-   syncObject.$bindTo($scope, "test")
+   // syncObject.$bindTo($scope, "test")
 
 
    $scope.changeView = function (view) {
@@ -157,8 +157,8 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
 
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
-            console.log(re,"*********RE**********");
-            console.log(answerToPuzzle,"*********ANSWERTOPUZZLE**********");
+            // console.log(re,"*********RE**********");
+            // console.log(answerToPuzzle,"*********ANSWERTOPUZZLE**********");
 
       var match = stringToParse.match(re)
       var answer = stringToParse.match(answerToPuzzle)
@@ -172,6 +172,14 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
+         console.log($routeParams.id)
+         var puzzle = $routeParams.id 
+         syncObject[puzzle] = true;
+         syncObject.$save().then(function(ref) {
+            ref.key() === syncObject.$id
+         }, function (error) {
+            console.log ("Error:", error);
+         })
       } else {
          $(".c4").addClass('wrong');
 
