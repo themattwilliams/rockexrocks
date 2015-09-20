@@ -172,7 +172,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
-         console.log($routeParams.id)
          var puzzle = $routeParams.id 
          syncObject[puzzle] = true;
          syncObject.$save().then(function(ref) {
@@ -182,6 +181,13 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          })
       } else {
          $(".c4").addClass('wrong');
+         var puzzle = $routeParams.id 
+         syncObject[puzzle] = false;
+         syncObject.$save().then(function(ref) {
+            ref.key() === syncObject.$id
+         }, function (error) {
+            console.log ("Error:", error);
+         })
 
       }
      setTimeout(function(){
