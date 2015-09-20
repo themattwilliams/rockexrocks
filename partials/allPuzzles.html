@@ -1,24 +1,34 @@
-<h1>ALL PUZZLES</h1>
-<h3>Click a puzzle to start</h3>
+<div class="flex-menu-container">
 
+  <div class="flex-menu" ng-mouseover="hoverEnter()" ng-mouseleave="hoverExit()">
+    <span>
+      <i ng-show="hoverOn" class="fa fa-home fa-3x animate-show" id="home"></i>
+      <i ng-show="hoverOn" class="fa fa-question-circle fa-3x animate-show modal-trigger" id="question" href="#modal1"></i>
+      <i ng-show="hoverOn" class="fa fa-gamepad fa-3x animate-show" id="gamepad" ng-click="changeView(1001)"></i>
+      <i ng-show="hoverOn" class="fa fa-graduation-cap fa-3x animate-show" id="learn" ng-click="changeView(1)"></i>
+    </span>
+    <span id="hamburger">
+      <i class="fa fa-bars fa-3x"></i>
+    </span>
+  </div>
+</div>
 
-<table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Puzzle</th>
-        <th>description</th>
-        <th>Difficulty</th>
-        <th>Attempted</th>
-        <th>Completed</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="puzzle in learnPuzzles" ng-click="changeView(puzzle.id)">
-        <td>{{puzzle.puzzle}}</td>
-        <td>{{puzzle.description}}</td>
-        <td>{{puzzle.difficulty}}</td>
-        <td>{{puzzle.completed}}</td>
-      </tr>
+<div class="all-puzzles">
+  <table class="table table-hover">
+      <thead class="table-data">
+        <tr>
+          <th>Puzzle</th>
+          <th>Difficulty</th>
+          <th>Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="puzzle in learningMode" ng-click="changeView(puzzle.id)">
+          <td>{{puzzle.title}}</td>
+          <td>{{puzzle.difficulty}}</td>
+          <td>{{puzzle.completed}}</td>
+        </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>

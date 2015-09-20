@@ -53,6 +53,12 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $(".container").css("width", "60%")
          $(".container").css("margin-left", "20%")
          $(".container").css("margin-right", "20%")
+         if ($location.$$path === "/allPuzzles") {
+            console.log("yipyipyip")
+            $(".all-puzzles").css("font-size", "1em")
+         }
+         
+
      };
 
      if ($( window ).width() > 800) {
@@ -123,6 +129,9 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
         $('#question').css("color","#CC4B09")
       });
    }
+
+   $scope.learningMode = learningMode;
+   $scope.gameMode = gameMode;
 
    learningMode.forEach(function(puzzle){
       if ($routeParams.id === puzzle.id.toString()) {

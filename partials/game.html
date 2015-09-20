@@ -2,11 +2,26 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4>How it works:</h4>
-      <p>enter stuff to do good things</p>
-      <p>enter stuff to do good things</p>
-      <p>enter stuff to do good things</p>
-      <p>enter stuff to do good things</p>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Puzzle</th>
+            <th>description</th>
+            <th>Difficulty</th>
+            <th>Attempted</th>
+            <th>Completed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="puzzle in learningMode" ng-click="changeView(puzzle.id)" class="modal-action modal-close">
+            <td>{{puzzle.puzzle}}</td>
+            <td>{{puzzle.description}}</td>
+            <td>{{puzzle.difficulty}}</td>
+            <td>{{puzzle.completed}}</td>
+          </tr>
+
+        </tbody>
+      </table>
     </div>
     <div class="modal-footer">
       <a ng-href="#{{puzzle.id}}" class="modal-action modal-close waves-effect waves-green btn-flat ">Let Me Play!!</a>
@@ -15,6 +30,7 @@
           
 
 <div class="flex-menu-container">
+
 	<div class="flex-menu" ng-mouseover="hoverEnter()" ng-mouseleave="hoverExit()">
 		<span>
 			<i ng-show="hoverOn" class="fa fa-home fa-3x animate-show" id="home"></i>
@@ -27,11 +43,14 @@
 		</span>
 	</div>
 </div>
+
+
+
 <!-- <div ng-bind-html="my_html | to_trusted"></div> -->
 <div class="container animated fadeInRight" ng-keypress="keypressAction()">
 	<div class="c1">
-		<span class="r1">{{puzzle.title}}</span>
-		<span class="r2">Hard: {{puzzle.difficulty}}</span>
+		<span class="r1">{{puzzle.title}} </i></span>
+		<span class="r2"> Hard: {{puzzle.difficulty}}</span>
 	</div>
 	<div class="c2" ng-bind-html="puzzle.description | to_trusted"></div>
 	<div class="c3 angular-with-newlines" style="color:blue;">{{puzzle.stringToSearch}}</div>

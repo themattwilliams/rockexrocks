@@ -1,3 +1,19 @@
+.all-puzzles {
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	margin-top: 5px;
+	z-index: 2;
+	vertical-align: center;
+	text-align: center;
+	position: absolute;
+	margin-left: 30%;
+	margin-right: 30%;
+	width: 40%;
+	background-color: green;
+	border-radius: 4%;
+	opacity: 1;
+}
 
 
 .container {
@@ -198,6 +214,12 @@ span.r2 {
 }
 
 /*********************************************************************/
+#status {
+	padding: 10px;
+	text-align: left;
+	color: #CC4B09;
+}	
+
 #hamburger {
 	padding: 10px;
 	text-align: right;
@@ -264,7 +286,7 @@ span.r2 {
  
 }
 
-.scroll-fast{
+/*.scroll-fast{
 	z-index: 1;
 	overflow: hidden;
 	position: fixed;
@@ -283,7 +305,7 @@ span.r2 {
 	-o-animation: 15s linear 0s normal none infinite animate;
 	animation: 15s linear 0s normal none infinite animate;
  
-}
+}*/
  
 @-webkit-keyframes animate {
 	from {background-position:0 0;}
@@ -315,9 +337,9 @@ body {
 	background-color: #DBFCFF;
 }
 
-#guess input[disabled] {
+/*#guess input[disabled] {
     color: #DCDAD1;
     padding: 2px;
     margin: 0 0 0 0;
     background-image: none;
-}
+}*/
