@@ -1,4 +1,9 @@
-app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode){
+app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject){
+   var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
+   var syncObject = $firebaseObject(ref);
+   syncObject.$bindTo($scope, "test")
+
+
    $scope.changeView = function (view) {
       $location.path(view)
    }
@@ -12,9 +17,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $route.reload()
       },500)
    }
-
-   // if enter is pressed, console.log foo
-
 
    $scope.nextPuzzle = function () {
       $('.container').addClass('fadeOutLeft')

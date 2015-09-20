@@ -314,3 +314,10 @@ span.r2 {
 body {
 	background-color: #DBFCFF;
 }
+
+#guess input[disabled] {
+    color: #DCDAD1;
+    padding: 2px;
+    margin: 0 0 0 0;
+    background-image: none;
+}

@@ -1,3 +1,4 @@
+	<input ng-model="test.name" ng-change="profile.$save()" type="text">
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
@@ -36,14 +37,14 @@
 	<div class="c2" ng-bind-html="puzzle.description | to_trusted"></div>
 	<div class="c3 angular-with-newlines" style="color:blue;">{{puzzle.stringToSearch}}</div>
 	<div class="c4 z-depth-3">
-		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx)'>
-			/<input ng-model="input.guess" autofocus>/
+		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx) '>
+			/<input ng-model="input.guess" autofocus id="guess">/
 			<input ng-model="input.flags" style="width: 40px;">
 			<input type="submit" id="submit" style="position: absolute; left: -9999px"/>
 		</form>
 	</div>
 	<div class="c5 hide z-depth-3">{{userAnswer}}</div>
-	<div class="c6 hide z-depth-3" ng-click="tryAgain()">Try Again!</div>
+	<div class="c6 hide z-depth-3" ng-click="tryAgain()">Press Enter to try again!</div>
 	<div class="c7 hide z-depth-3" ng-click="nextPuzzle()">Next Puzzle</div>
 </div>
 
