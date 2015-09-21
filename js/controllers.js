@@ -1,8 +1,16 @@
 app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject){
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
    var syncObject = $firebaseObject(ref.child("users"));
-   // syncObject.$bindTo($scope, "test")
-
+   
+   $scope.githubLogin = function () {
+      ref.authWithOAuthRedirect("github", function(error) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          // We'll never get here, as the page will redirect on success.
+        }
+      });
+   }
 
    $scope.changeView = function (view) {
       $location.path(view)
@@ -68,7 +76,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      }()
 
      var onResize = function () {
-   $(window).resize(function(event) {
+      $(window).resize(function(event) {
         console.log( $( window ).width() )
         if ($( window ).width() < 800) {
             $(".container").css("width", "60%")
@@ -216,7 +224,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
          var puzzle = $routeParams.id 
-       } else {
+      } else {
          $(".c4").addClass('wrong');
          var puzzle = $routeParams.id 
       }

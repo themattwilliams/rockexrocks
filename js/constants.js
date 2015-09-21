@@ -122,7 +122,7 @@ app.constant("gameMode", [
 
 	{
 	   title: "Get all word-like characters", difficulty: 1, 
-	   description: "select all word characters separately",
+	   description: "select all-word characters separately",
 	   stringToSearch: "Come with me if you want to live",
 	   regEx: new RegExp("[\\w]","g"),
 	   id: 1003,
@@ -131,7 +131,7 @@ app.constant("gameMode", [
 
 	{
 	   title: "Get all word-like characters", difficulty: 1, 
-	   description: "Select all word",
+	   description: "Select all words",
 	   stringToSearch: "Come with me if you want to live",
 	   regEx: new RegExp("[\\w]+","g"),
 	   id: 1004,
