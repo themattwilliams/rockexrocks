@@ -40,13 +40,42 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      $('.modal-trigger').leanModal();
 
      var windowSizer = function() {
+      if ($( window ).width() < 800) {
+          $(".container").css("width", "60%")
+          $(".container").css("margin-left", "20%")
+          $(".container").css("margin-right", "20%")
+          $(".container").css("font-size", "1.2em")
+          if ($location.$$path === "/allPuzzles") {
+             $(".all-puzzles").css("font-size", "1em")
+          }
+      } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
+          $(".container").css("width", "50%")
+          $(".container").css("margin-left", "25%")
+          $(".container").css("margin-right", "25%")
+          $(".container").css("font-size", "1.5em")
+          if ($location.$$path === "/allPuzzles") {
+             $(".all-puzzles").css("font-size", "1.2em")
+          }
+      } else if ($( window ).width() > 1600) {
+          $(".container").css("width", "50%")
+          $(".container").css("margin-left", "25%")
+          $(".container").css("margin-right", "25%")
+          $(".container").css("font-size", "2em")
+          if ($location.$$path === "/allPuzzles") {
+             $(".all-puzzles").css("font-size", "2em")
+          }
+      }
+     }()
+
+     var onResize = function () {
+   $(window).resize(function(event) {
+        console.log( $( window ).width() )
         if ($( window ).width() < 800) {
             $(".container").css("width", "60%")
             $(".container").css("margin-left", "20%")
             $(".container").css("margin-right", "20%")
             $(".container").css("font-size", "1.2em")
             if ($location.$$path === "/allPuzzles") {
-               console.log("yipyipyip")
                $(".all-puzzles").css("font-size", "1em")
             }
         } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
@@ -54,39 +83,20 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("margin-left", "25%")
             $(".container").css("margin-right", "25%")
             $(".container").css("font-size", "1.5em")
+            if ($location.$$path === "/allPuzzles") {
+               $(".all-puzzles").css("font-size", "1.2em")
+            }
         } else if ($( window ).width() > 1600) {
             $(".container").css("width", "50%")
             $(".container").css("margin-left", "25%")
             $(".container").css("margin-right", "25%")
             $(".container").css("font-size", "2em")
+            if ($location.$$path === "/allPuzzles") {
+               $(".all-puzzles").css("font-size", "2em")
+            }
         }
-     }()
-
-
-   $(window).resize(function(event) {
-
-     console.log( $( window ).width() )
-     if ($( window ).width() < 800) {
-         $(".container").css("width", "60%")
-         $(".container").css("margin-left", "20%")
-         $(".container").css("margin-right", "20%")
-         $(".container").css("font-size", "1.2em")
-         if ($location.$$path === "/allPuzzles") {
-            console.log("yipyipyip")
-            $(".all-puzzles").css("font-size", "1em")
-         }
-     } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
-         $(".container").css("width", "50%")
-         $(".container").css("margin-left", "25%")
-         $(".container").css("margin-right", "25%")
-         $(".container").css("font-size", "1.5em")
-     } else if ($( window ).width() > 1600) {
-         $(".container").css("width", "50%")
-         $(".container").css("margin-left", "25%")
-         $(".container").css("margin-right", "25%")
-         $(".container").css("font-size", "2em")
-     }
-   });  
+      });  
+   }()
 
  // MENU ********************************
 
