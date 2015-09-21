@@ -1,6 +1,6 @@
 app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject){
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
-   var syncObject = $firebaseObject(ref);
+   var syncObject = $firebaseObject(ref.child("users"));
    // syncObject.$bindTo($scope, "test")
 
 
@@ -39,11 +39,28 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
      $('.modal-trigger').leanModal();
 
-   if ($( window ).width() < 800) {
-       $(".container").css("width", "60%")
-       $(".container").css("margin-left", "15%")
-       $(".container").css("margin-right", "15%")
-   };
+     var windowSizer = function() {
+        if ($( window ).width() < 800) {
+            $(".container").css("width", "60%")
+            $(".container").css("margin-left", "20%")
+            $(".container").css("margin-right", "20%")
+            $(".container").css("font-size", "1.2em")
+            if ($location.$$path === "/allPuzzles") {
+               console.log("yipyipyip")
+               $(".all-puzzles").css("font-size", "1em")
+            }
+        } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
+            $(".container").css("width", "50%")
+            $(".container").css("margin-left", "25%")
+            $(".container").css("margin-right", "25%")
+            $(".container").css("font-size", "1.5em")
+        } else if ($( window ).width() > 1600) {
+            $(".container").css("width", "50%")
+            $(".container").css("margin-left", "25%")
+            $(".container").css("margin-right", "25%")
+            $(".container").css("font-size", "2em")
+        }
+     }()
 
 
    $(window).resize(function(event) {
@@ -53,20 +70,22 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $(".container").css("width", "60%")
          $(".container").css("margin-left", "20%")
          $(".container").css("margin-right", "20%")
+         $(".container").css("font-size", "1.2em")
          if ($location.$$path === "/allPuzzles") {
             console.log("yipyipyip")
             $(".all-puzzles").css("font-size", "1em")
          }
-         
-
-     };
-
-     if ($( window ).width() > 800) {
-         $(".container").css("width", "40%")
-         $(".container").css("margin-left", "30%")
-         $(".container").css("margin-right", "30%")
-     };
-
+     } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
+         $(".container").css("width", "50%")
+         $(".container").css("margin-left", "25%")
+         $(".container").css("margin-right", "25%")
+         $(".container").css("font-size", "1.5em")
+     } else if ($( window ).width() > 1600) {
+         $(".container").css("width", "50%")
+         $(".container").css("margin-left", "25%")
+         $(".container").css("margin-right", "25%")
+         $(".container").css("font-size", "2em")
+     }
    });  
 
  // MENU ********************************
@@ -137,6 +156,27 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
          $scope.puzzle = puzzle;
+         // console log the value for this puzzle id from the firebase obj
+         console.log(puzzle.id)
+         syncObject.$loaded()
+            .then(function(obj) {
+               for (key in obj) {
+                  console.log(key, obj[key])
+                  // console.log(obj[key])
+               }
+
+               // obj.forEach(function(x){
+               //    // console.log(Object.keys(x))
+               //    console.log((x))
+               // })
+            })
+            .catch(function(error) {
+               console.log("Error:", error)
+            })
+         console.log(syncObject[puzzle.id])
+         syncObject.forEach(function(x) {
+            console.log(x, 'XXXXX')
+         })
       } 
    })
 
@@ -146,22 +186,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $scope.puzzle = puzzle;
       } 
    })
-
-   // if ($routeParams.id > 1000) {
-   //    console.log($('#learnMode'))
-   //    $('#learnMode').css({
-   //       '-webkit-animation': '5s linear 0s normal none infinite animate;',
-   //       '-moz-animation': '5s linear 0s normal none infinite animate;',
-   //       'animation': '5s linear 0s normal none infinite animate;'
-   //    });
-   //   // -webkit-animation: 15s linear 0s normal none infinite animate;
-   //   // -moz-animation: 15s linear 0s normal none infinite animate;
-   //   // -ms-animation: 15s linear 0s normal none infinite animate;
-   //   // -o-animation: 15s linear 0s normal none infinite animate;
-   //   // animation: 15s linear 0s normal none infinite animate;
-
-   // }
-
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
 
@@ -182,22 +206,9 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
          var puzzle = $routeParams.id 
-         syncObject[puzzle] = true;
-         syncObject.$save().then(function(ref) {
-            ref.key() === syncObject.$id
-         }, function (error) {
-            console.log ("Error:", error);
-         })
-      } else {
+       } else {
          $(".c4").addClass('wrong');
          var puzzle = $routeParams.id 
-         syncObject[puzzle] = false;
-         syncObject.$save().then(function(ref) {
-            ref.key() === syncObject.$id
-         }, function (error) {
-            console.log ("Error:", error);
-         })
-
       }
      setTimeout(function(){
          if ( $(".c4").hasClass('correct') ){
