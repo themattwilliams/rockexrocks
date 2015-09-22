@@ -1,10 +1,16 @@
 app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", "$firebaseArray", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject, $firebaseArray){
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
    var syncObject = $firebaseObject(ref);
-   var winsArray = [-1];
+   var arr = [];
+   arr[0] = 3
+   arr[1] = 322
+   arr[2] = 4
+   localStorage['arr'] = JSON.stringify(arr)
+   var storedWins = JSON.parse(localStorage['arr'])
 
    $scope.githubLogin = function () {
       ref.authWithOAuthRedirect("github", function(error, authData) {
+         console.log(authData)
         if (error) {
           console.log("Login Failed!", error);
         } else {
@@ -18,23 +24,35 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    };
 
    function authDataCallback(authData) {
-     if (authData) {
-       console.log("User " + authData.uid + " is logged in with " + authData.provider);
-
-       // if (syncObject[authData.uid] === "undefined") {
-          syncObject.$loaded().then(function() {
-            syncObject[authData.uid] = {"wins":winsArray};
-            syncObject.$save()
-          })
-
-
-       // };
-     } else {
+      var winPuzzleId = parseInt($routeParams.id)
+      if (authData) {
+         console.log("User " + authData.uid + " is logged in with " + authData.provider);
+         // console.log($routeParams.id, "I'M THE ID FROM ROUTE")
+         syncObject.$loaded().then(function() {
+            if (!syncObject[authData.uid].wins) {
+               syncObject[authData.uid].wins = [0];
+               syncObject.$save()
+            }
+            if (syncObject[authData.uid].wins) {
+               var duplicateFound = false
+               syncObject[authData.uid].wins.forEach(function(previousWin) {
+                  if (previousWin === winPuzzleId) {
+                     console.log("Win dup found at id", previousWin);
+                     duplicateFound = true
+                  }
+               })
+               if (!duplicateFound) {
+                  syncObject[authData.uid].wins.push(winPuzzleId)   
+                  syncObject.$save()
+               }
+            }
+         })
+      } else {
        console.log("User is logged out");
      }
    };
 
-   ref.onAuth(authDataCallback);
+   // ref.onAuth(authDataCallback);
 
    $scope.changeView = function (view) {
       $location.path(view)
@@ -224,6 +242,10 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       } 
    })
 
+   var pushWinsToFirebaseArray = function (id) {
+      ref.onAuth(authDataCallback);
+   }
+
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
       var match = stringToParse.match(re)
@@ -237,6 +259,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
          var puzzle = $routeParams.id 
+         pushWinsToFirebaseArray();
       } else {
          $(".c4").addClass('wrong');
          var puzzle = $routeParams.id 
