@@ -9,8 +9,8 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    var storedWins = JSON.parse(localStorage['arr'])
 
    $scope.githubLogin = function () {
-      ref.authWithOAuthRedirect("github", function(error, authData) {
-         console.log(authData)
+      ref.authWithOAuthRedirect("github", function(error) {
+         
         if (error) {
           console.log("Login Failed!", error);
         } else {
@@ -29,9 +29,17 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          console.log("User " + authData.uid + " is logged in with " + authData.provider);
          // console.log($routeParams.id, "I'M THE ID FROM ROUTE")
          syncObject.$loaded().then(function() {
+            console.log(syncObject,"*********SYNCOBJECT**********");
+            syncObject[authData.uid].wins = winPuzzleId
+            console.log(syncObject,"*********SYNCOBJECT**********");
+            syncObject.$save();            
             if (!syncObject[authData.uid].wins) {
-               syncObject[authData.uid].wins = [0];
+               syncObject[authData.uid].wins = "yoyoyo";
+               syncObject.treefrog.wins = "yoyoyo";
+
                syncObject.$save()
+               console.log(syncObject,"*********SYNCOBJECT**********");
+
             }
             if (syncObject[authData.uid].wins) {
                var duplicateFound = false
@@ -43,6 +51,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
                })
                if (!duplicateFound) {
                   syncObject[authData.uid].wins.push(winPuzzleId)   
+                  // syncObject[authData.uid].wins.push([1,2,3])   
                   syncObject.$save()
                }
             }
@@ -52,7 +61,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      }
    };
 
-   // ref.onAuth(authDataCallback);
+   ref.onAuth(authDataCallback);
 
    $scope.changeView = function (view) {
       $location.path(view)
