@@ -1,16 +1,40 @@
-app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject){
+app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", "$firebaseArray", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject, $firebaseArray){
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
-   var syncObject = $firebaseObject(ref.child("users"));
-   
+   var syncObject = $firebaseObject(ref);
+   var winsArray = [-1];
+
    $scope.githubLogin = function () {
-      ref.authWithOAuthRedirect("github", function(error) {
+      ref.authWithOAuthRedirect("github", function(error, authData) {
         if (error) {
           console.log("Login Failed!", error);
         } else {
           // We'll never get here, as the page will redirect on success.
         }
       });
-   }
+   };
+
+   $scope.githubLogOut = function () {
+      ref.unauth();
+   };
+
+   function authDataCallback(authData) {
+     if (authData) {
+       console.log("User " + authData.uid + " is logged in with " + authData.provider);
+
+       // if (syncObject[authData.uid] === "undefined") {
+          syncObject.$loaded().then(function() {
+            syncObject[authData.uid] = {"wins":winsArray};
+            syncObject.$save()
+          })
+
+
+       // };
+     } else {
+       console.log("User is logged out");
+     }
+   };
+
+   ref.onAuth(authDataCallback);
 
    $scope.changeView = function (view) {
       $location.path(view)
@@ -174,27 +198,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
          $scope.puzzle = puzzle;
-         // console log the value for this puzzle id from the firebase obj
-         console.log(puzzle.id)
-         syncObject.$loaded()
-            .then(function(obj) {
-               for (key in obj) {
-                  console.log(key, obj[key])
-                  // console.log(obj[key])
-               }
-
-               // obj.forEach(function(x){
-               //    // console.log(Object.keys(x))
-               //    console.log((x))
-               // })
-            })
-            .catch(function(error) {
-               console.log("Error:", error)
-            })
-         console.log(syncObject[puzzle.id])
-         syncObject.forEach(function(x) {
-            console.log(x, 'XXXXX')
-         })
       } 
    })
 
@@ -206,11 +209,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    })
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
-
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
-            // console.log(re,"*********RE**********");
-            // console.log(answerToPuzzle,"*********ANSWERTOPUZZLE**********");
-
       var match = stringToParse.match(re)
       var answer = stringToParse.match(answerToPuzzle)
       $('.c5').removeClass('hide').addClass('animated flipInX')
@@ -219,8 +218,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       } else {
          $scope.userAnswer = "Ruh Roh! Your RegEx didn't return anything!"
       }
-      
-
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
          var puzzle = $routeParams.id 
@@ -228,12 +225,12 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $(".c4").addClass('wrong');
          var puzzle = $routeParams.id 
       }
+      
      setTimeout(function(){
          if ( $(".c4").hasClass('correct') ){
             $('.c7').removeClass('hide').addClass('animated flipInX')
          } 
       }, 760) 
-
      setTimeout(function(){
          if ( $(".c4").hasClass('wrong') ){
             $('.c6').removeClass('hide').addClass('animated flipInX')

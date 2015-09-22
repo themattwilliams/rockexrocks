@@ -10,7 +10,7 @@ app.constant("learningMode", [
 
   {
      title: "The Whole Word", difficulty: 1, 
-     description: "Add a <font color='#CC4B09'> ^ </font> character in a RegEx to match the beginning of a string. The <font color='#CC4B09'> \\w </font> means match any word character (alphanumberic). Add a <font color='#CC4B09'> + </font> after the <font color='#CC4B09'> \\w </font> to match 1 or more of the preceding item.",
+     description: "Add a <font color='#CC4B09'> ^ </font> character in a RegEx to match the beginning of a string. The <font color='#CC4B09'> \\w </font> means match any word character (alphanumeric and underscore). Add a <font color='#CC4B09'> + </font> after the <font color='#CC4B09'> \\w </font> to match 1 or more of the preceding item.",
      stringToSearch: "The raindeer in spain was hit mainly by the plane",
      regEx: new RegExp("^\\w+",""),
      id: 2,
