@@ -8,6 +8,22 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    // localStorage['arr'] = JSON.stringify(arr)
    // var storedWins = JSON.parse(localStorage['arr'])
 
+   // $scope.puzzleFinder = function (puzzleId) {
+   //    syncObject.$loaded(function(){
+   //       // console.log(puzzleId)
+   //       // console.log(AuthId.uid,"*********AUTHID**********");
+         
+   //       syncObject[AuthId.uid].forEach(function(puzzle){
+   //          if (puzzleId == puzzle) {
+   //             console.log("FOUND")
+   //             return true
+   //          }
+   //       })
+   //       return false
+   //    })
+
+   // }
+
    $scope.githubLogin = function () {
       ref.authWithOAuthRedirect("github", function(error) {
          
@@ -29,13 +45,13 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          console.log("User " + authData.uid + " is logged in with " + authData.provider);
          // console.log($routeParams.id, "I'M THE ID FROM ROUTE")
          syncObject.$loaded().then(function() {
-            console.log(syncObject,"*********SYNCOBJECT**********");
+            // console.log(syncObject,"*********SYNCOBJECT**********");
             // syncObject[authData.uid] = winPuzzleId
             if (!syncObject[authData.uid]) {
                syncObject[authData.uid] = [0];
                syncObject.$save();     
             }
-            console.log(syncObject,"*********SYNCOBJECT**********");
+            // console.log(syncObject,"*********SYNCOBJECT**********");
          })
       } else {
        console.log("User is logged out");
@@ -232,7 +248,31 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       });
    }
 
-   $scope.learningMode = learningMode;
+   if (AuthId.uid) {
+      console.log("AUTH ID FOUND")
+      console.log(learningMode)
+
+      syncObject.$loaded(function() {
+         for (each in learningMode) {
+            // console.log(learningMode[each].id)
+            for (i = 0 ; i < syncObject[AuthId.uid].length ; i++) {
+               // console.log(syncObject[AuthId.uid][i], learningMode[i].id)
+               // console.log(each.id,"*********EACH.ID**********");
+
+               if (syncObject[AuthId.uid][i] === learningMode[each].id) {
+                  console.log("WIN FOUND")
+               }
+            }
+         }
+         $scope.learningMode = learningMode;
+      })
+   } else {
+      console.log("NO AUTH ID FOUND")
+      $scope.learningMode = learningMode;
+   }
+
+   
+
    $scope.gameMode = gameMode;
 
    learningMode.forEach(function(puzzle){
