@@ -1,12 +1,12 @@
-app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", "$firebaseArray", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject, $firebaseArray){
+app.controller('RegExController', ["$scope", "$location", "$routeParams", "$route", "$timeout", "learningMode", "gameMode", "$firebaseObject", "AuthId", function($scope, $location, $routeParams, $route, $timeout, learningMode, gameMode, $firebaseObject, AuthId){
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
    var syncObject = $firebaseObject(ref);
    var arr = [];
-   arr[0] = 3
-   arr[1] = 322
-   arr[2] = 4
-   localStorage['arr'] = JSON.stringify(arr)
-   var storedWins = JSON.parse(localStorage['arr'])
+   // arr[0] = 3
+   // arr[1] = 322
+   // arr[2] = 4
+   // localStorage['arr'] = JSON.stringify(arr)
+   // var storedWins = JSON.parse(localStorage['arr'])
 
    $scope.githubLogin = function () {
       ref.authWithOAuthRedirect("github", function(error) {
@@ -24,42 +24,40 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    };
 
    function authDataCallback(authData) {
-      var winPuzzleId = parseInt($routeParams.id)
       if (authData) {
+         AuthId.set(authData.uid) 
          console.log("User " + authData.uid + " is logged in with " + authData.provider);
          // console.log($routeParams.id, "I'M THE ID FROM ROUTE")
          syncObject.$loaded().then(function() {
             console.log(syncObject,"*********SYNCOBJECT**********");
-            syncObject[authData.uid].wins = winPuzzleId
+            // syncObject[authData.uid] = winPuzzleId
+            if (!syncObject[authData.uid]) {
+               syncObject[authData.uid] = [0];
+               syncObject.$save();     
+            }
             console.log(syncObject,"*********SYNCOBJECT**********");
-            syncObject.$save();            
-            if (!syncObject[authData.uid].wins) {
-               syncObject[authData.uid].wins = "yoyoyo";
-               syncObject.treefrog.wins = "yoyoyo";
-
-               syncObject.$save()
-               console.log(syncObject,"*********SYNCOBJECT**********");
-
-            }
-            if (syncObject[authData.uid].wins) {
-               var duplicateFound = false
-               syncObject[authData.uid].wins.forEach(function(previousWin) {
-                  if (previousWin === winPuzzleId) {
-                     console.log("Win dup found at id", previousWin);
-                     duplicateFound = true
-                  }
-               })
-               if (!duplicateFound) {
-                  syncObject[authData.uid].wins.push(winPuzzleId)   
-                  // syncObject[authData.uid].wins.push([1,2,3])   
-                  syncObject.$save()
-               }
-            }
          })
       } else {
        console.log("User is logged out");
      }
    };
+
+   function userWins () {
+      var winPuzzleId = parseInt($routeParams.id)
+      if (syncObject[AuthId.uid]) {
+         var duplicateFound = false
+         syncObject[AuthId.uid].forEach(function(previousWin) {
+            if (previousWin === winPuzzleId) {
+               console.log("Win dup found at id", previousWin);
+               duplicateFound = true
+            }
+         })
+         if (!duplicateFound) {
+            syncObject[AuthId.uid].push(winPuzzleId)   
+            syncObject.$save()
+         }
+      }
+   }
 
    ref.onAuth(authDataCallback);
 
@@ -251,9 +249,9 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       } 
    })
 
-   var pushWinsToFirebaseArray = function (id) {
-      ref.onAuth(authDataCallback);
-   }
+   // var pushWinsToFirebaseArray = function (id) {
+   //    ref.onAuth(authDataCallback);
+   // }
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
@@ -268,7 +266,8 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
          var puzzle = $routeParams.id 
-         pushWinsToFirebaseArray();
+         // pushWinsToFirebaseArray();
+         userWins()
       } else {
          $(".c4").addClass('wrong');
          var puzzle = $routeParams.id 
