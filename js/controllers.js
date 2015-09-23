@@ -256,11 +256,9 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          for (each in learningMode) {
             // console.log(learningMode[each].id)
             for (i = 0 ; i < syncObject[AuthId.uid].length ; i++) {
-               // console.log(syncObject[AuthId.uid][i], learningMode[i].id)
-               // console.log(each.id,"*********EACH.ID**********");
-
                if (syncObject[AuthId.uid][i] === learningMode[each].id) {
                   console.log("WIN FOUND")
+                  learningMode[each].completed = true
                }
             }
          }

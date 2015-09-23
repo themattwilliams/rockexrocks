@@ -28,7 +28,7 @@
         <tr ng-repeat="puzzle in learningMode" ng-click="changeView(puzzle.id)">
           <td>{{puzzle.title}}</td>
           <td>{{puzzle.difficulty}}</td>
-          <td ng-show="puzzleFinder(puzzle.id)">{{puzzle.id}} PUZZ BE FOUND YO</td>
+          <td>{{puzzle.completed}}</td>
         </tr>
 
       </tbody>
