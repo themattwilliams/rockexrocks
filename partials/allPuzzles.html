@@ -2,11 +2,11 @@
 
   <div class="flex-menu" ng-mouseenter="hoverEnter()" ng-mouseleave="hoverExit()">
     <span>
+      <i ng-show="hoverOn" class="fa fa-sign-in fa-4x animate-show" id="sign-in" ng-click="githubLogin()"></i>
       <i ng-show="hoverOn" class="fa fa-home fa-4x animate-show" id="home"></i>
       <i ng-show="hoverOn" class="fa fa-question-circle fa-4x animate-show modal-trigger" id="question" href="#modal1"></i>
       <i ng-show="hoverOn" class="fa fa-gamepad fa-4x animate-show" id="gamepad" ng-click="changeView(1001)"></i>
       <i ng-show="hoverOn" class="fa fa-graduation-cap fa-4x animate-show" id="learn" ng-click="changeView(1)"></i>
-      <i ng-show="hoverOn" class="fa fa-sign-in fa-4x animate-show" id="sign-in" ng-click="githubLogin()"></i>
       <i ng-show="hoverOn" class="fa fa-sign-out fa-4x animate-show" id="sign-out" ng-click="githubLogOut()"></i>
     </span>
     <span id="hamburger">
@@ -28,7 +28,8 @@
         <tr ng-repeat="puzzle in learningMode" ng-click="changeView(puzzle.id)">
           <td>{{puzzle.title}}</td>
           <td>{{puzzle.difficulty}}</td>
-          <td>{{puzzle.completed}}</td>
+          <td ng-show="puzzle.completed"><i class="fa fa-check"></i></td>
+          <td ng-show="!puzzle.completed"></td>
         </tr>
 
       </tbody>

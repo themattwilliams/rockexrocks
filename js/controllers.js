@@ -2,31 +2,19 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    var ref = new Firebase("https://radiant-torch-6315.firebaseio.com/");
    var syncObject = $firebaseObject(ref);
    var arr = [];
-   // arr[0] = 3
-   // arr[1] = 322
-   // arr[2] = 4
-   // localStorage['arr'] = JSON.stringify(arr)
-   // var storedWins = JSON.parse(localStorage['arr'])
+   $scope.AuthId = AuthId.uid;
 
-   // $scope.puzzleFinder = function (puzzleId) {
-   //    syncObject.$loaded(function(){
-   //       // console.log(puzzleId)
-   //       // console.log(AuthId.uid,"*********AUTHID**********");
-         
-   //       syncObject[AuthId.uid].forEach(function(puzzle){
-   //          if (puzzleId == puzzle) {
-   //             console.log("FOUND")
-   //             return true
-   //          }
-   //       })
-   //       return false
-   //    })
-
-   // }
+   $scope.cssClear = function(){
+      console.log("foo")
+      $('.container').css("position","");
+      $('.container').css("margin-left","");
+      $('.container').css("margin-right","");
+      $('.container').css("width","");
+      $('.container').css("color","red");
+   }
 
    $scope.githubLogin = function () {
       ref.authWithOAuthRedirect("github", function(error) {
-         
         if (error) {
           console.log("Login Failed!", error);
         } else {
@@ -37,6 +25,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.githubLogOut = function () {
       ref.unauth();
+      Materialize.toast('You have logged out', 2000)  
    };
 
    function authDataCallback(authData) {
@@ -113,7 +102,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      $('.modal-trigger').leanModal();
 
      var windowSizer = function() {
-      if ($( window ).width() < 800) {
+      if ($( window ).width() < 401) {
+          $(".container").css("width", "100%")
+          $(".container").css("margin-left", "0%")
+          $(".container").css("margin-right", "0%")
+          $(".container").css("font-size", "1.2em")
+          if ($location.$$path === "/allPuzzles") {
+             $(".all-puzzles").css("font-size", "1em")
+          }
+       } else if ($( window ).width() < 800 && $( window ).width() > 402){
           $(".container").css("width", "60%")
           $(".container").css("margin-left", "20%")
           $(".container").css("margin-right", "20%")
@@ -137,7 +134,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "2em")
           }
-      } else if ($( window ).width() > 1800 ) {
+      } else if ($( window ).width() > 1800 && $( window ).width() < 1950) {
+          $(".container").css("width", "50%")
+          $(".container").css("margin-left", "30%")
+          $(".container").css("margin-right", "30%")
+          $(".container").css("font-size", "2em")
+          if ($location.$$path === "/allPuzzles") {
+             $(".all-puzzles").css("font-size", "2em")
+          }
+       } else if ($( window ).width() > 1950 ) {
           $(".container").css("width", "50%")
           $(".container").css("margin-left", "35%")
           $(".container").css("margin-right", "35%")
@@ -151,7 +156,16 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      var onResize = function () {
       $(window).resize(function(event) {
         console.log( $( window ).width() )
-        if ($( window ).width() < 800) {
+
+        if ($( window ).width() < 401) {
+            $(".container").css("width", "100%")
+            $(".container").css("margin-left", "0%")
+            $(".container").css("margin-right", "0%")
+            $(".container").css("font-size", "1.2em")
+            if ($location.$$path === "/allPuzzles") {
+               $(".all-puzzles").css("font-size", "1em")
+            }
+         } else if ($( window ).width() < 800 && $( window ).width() > 402) {
             $(".container").css("width", "60%")
             $(".container").css("margin-left", "20%")
             $(".container").css("margin-right", "20%")
@@ -175,7 +189,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "2em")
             }
-        } else if ($( window ).width() > 1800 ) {
+        } else if ($( window ).width() > 1800 && $( window ).width() < 1950) {
+            $(".container").css("width", "50%")
+            $(".container").css("margin-left", "30%")
+            $(".container").css("margin-right", "30%")
+            $(".container").css("font-size", "2em")
+            if ($location.$$path === "/allPuzzles") {
+               $(".all-puzzles").css("font-size", "2em")
+            }
+         } else if ($( window ).width() > 1950 ) {
             $(".container").css("width", "50%")
             $(".container").css("margin-left", "35%")
             $(".container").css("margin-right", "35%")
@@ -202,49 +224,55 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    var navHover = function () {
       $('#home').hover(function() {
-      /* Stuff to do when the mouse enters the element */
          console.log(this)
          $('#home').css("color","#127C22")
 
       }, function() {
-         /* Stuff to do when the mouse leaves the element */
         $('#home').css("color","#CC4B09")
       });
 
       $('#home').click(function(event) {
-         /* Act on the event */
-         console.log("foobar")
          $location.path('/allPuzzles')
       });
 
       $('#learn').hover(function() {
-      /* Stuff to do when the mouse enters the element */
          console.log(this)
          $('#learn').css("color","#127C22")
          
       }, function() {
-         /* Stuff to do when the mouse leaves the element */
         $('#learn').css("color","#CC4B09")
       });
 
       $('#gamepad').hover(function() {
-      /* Stuff to do when the mouse enters the element */
          console.log(this)
          $('#gamepad').css("color","#127C22")
          
       }, function() {
-         /* Stuff to do when the mouse leaves the element */
         $('#gamepad').css("color","#CC4B09")
       });
 
       $('#question').hover(function() {
-      /* Stuff to do when the mouse enters the element */
          console.log(this)
          $('#question').css("color","#127C22")
          
       }, function() {
-         /* Stuff to do when the mouse leaves the element */
         $('#question').css("color","#CC4B09")
+      });
+
+      $('#sign-in').hover(function() {
+         console.log(this)
+         $('#sign-in').css("color","#127C22")
+         
+      }, function() {
+        $('#sign-in').css("color","#CC4B09")
+      });
+
+      $('#sign-out').hover(function() {
+         console.log(this)
+         $('#sign-out').css("color","#127C22")
+         
+      }, function() {
+        $('#sign-out').css("color","#CC4B09")
       });
    }
 
