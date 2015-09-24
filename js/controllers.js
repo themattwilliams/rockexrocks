@@ -74,10 +74,13 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.tryAgain = function () {
       console.log($location.$$path)
-      $('.container').addClass('fadeOutLeft')
       $timeout(function(){
-         $route.reload()
+         // $route.reload()
+         $('.c6').removeClass('flipInX').addClass('flipOutX')
+         $('.c5').removeClass('flipInX').addClass('flipOutX')
+         $('.container').removeClass('shake-again')
       },500)
+
    }
 
    $scope.nextPuzzle = function () {
@@ -320,10 +323,11 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    // }
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
+      // $('.container').removeClass('shake')
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
       var match = stringToParse.match(re)
       var answer = stringToParse.match(answerToPuzzle)
-      $('.c5').removeClass('hide').addClass('animated flipInX')
+      $('.c5').removeClass('hide flipOutX').addClass('animated flipInX')
       if (match) {
          $scope.userAnswer = "Your RegEx Returns: " + match
       } else {
@@ -336,17 +340,20 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          userWins()
       } else {
          $(".c4").addClass('wrong');
+         $('.container').addClass('shake')
+         // $('.container').addClass('shake-again')
          var puzzle = $routeParams.id 
       }
 
      setTimeout(function(){
          if ( $(".c4").hasClass('correct') ){
-            $('.c7').removeClass('hide').addClass('animated flipInX')
+            $('.c7').removeClass('hide flipOutX').addClass('animated flipInX')
          } 
       }, 760) 
      setTimeout(function(){
          if ( $(".c4").hasClass('wrong') ){
-            $('.c6').removeClass('hide').addClass('animated flipInX')
+            $('.c6').removeClass('hide flipOutX').addClass('animated flipInX')
+            $scope.input = angular.copy($scope.master);
          } 
       }, 760)
    }

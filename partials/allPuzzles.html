@@ -26,10 +26,10 @@
       </thead>
       <tbody>
         <tr ng-repeat="puzzle in learningMode" ng-click="changeView(puzzle.id)">
-          <td>{{puzzle.title}}</td>
-          <td>{{puzzle.difficulty}}</td>
-          <td ng-show="puzzle.completed"><i class="fa fa-check"></i></td>
-          <td ng-show="!puzzle.completed"></td>
+          <td class="animated fadeIn">{{puzzle.title}}</td>
+          <td class="animated fadeIn">{{puzzle.difficulty}}</td>
+          <td class="animated fadeIn" ng-show="puzzle.completed"><i class="fa fa-check"></i></td>
+          <td class="animated fadeIn" ng-show="!puzzle.completed"></td>
         </tr>
 
       </tbody>

@@ -332,3 +332,64 @@ body {
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #CC4B09;
 }
+
+.shake {
+  -webkit-animation: .5s linear 0s normal none 1 shake;
+  -moz-animation: .5s linear 0s normal none 1 shake;
+  -ms-animation: .5s linear 0s normal none 1 shake;
+  -o-animation: .5s linear 0s normal none 1 shake;
+  animation: .5s linear 0s normal none 1 shake;
+}
+
+.shake-again {
+  -webkit-animation: .5s linear 0s normal none 1 shake;
+  -moz-animation: .5s linear 0s normal none 1 shake;
+  -ms-animation: .5s linear 0s normal none 1 shake;
+  -o-animation: .5s linear 0s normal none 1 shake;
+  animation: .5s linear 0s normal none 1 shake;
+}
+
+@-webkit-keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 70%, 90% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  20%, 40%, 80% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  5%, 30%, 70%, 90% {
+    -webkit-transform: translate3d(-5px, 0, 0);
+    transform: translate3d(-5px, 0, 0);
+  }
+
+  20%, 40%, 80% {
+    -webkit-transform: translate3d(5px, 0, 0);
+    transform: translate3d(5px, 0, 0);
+  }
+}
+
+.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+ 
+.animate-enter.animate-enter-active {
+	opacity: 1;
+}
+

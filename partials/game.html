@@ -57,7 +57,7 @@
 	<div class="c2" ng-bind-html="puzzle.description | to_trusted"></div>
 	<div class="c3 angular-with-newlines" style="color:blue;">{{puzzle.stringToSearch}}</div>
 	<div class="c4 z-depth-3">
-		<form ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx) '>
+		<form id="gameForm" ng-submit='regexConverter(input, puzzle.stringToSearch, puzzle.regEx) '>
 			/<input ng-model="input.guess" autofocus id="guess">/
 			<input ng-model="input.flags" style="width: 40px;">
 			<input type="submit" id="submit" style="position: absolute; left: -9999px"/>

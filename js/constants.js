@@ -18,7 +18,7 @@ app.constant("learningMode", [
   },
 
   {
-     title: "Get all word-like characters", difficulty: 1, 
+     title: "Get All Word-like Characters", difficulty: 1, 
      description: "Putting something in brackets means match anything in the brackets. Type <font color='#CC4B09'> [\\w] </font> and add a <font color='#CC4B09'> g </font> flag in the right box to match everything 'globally' as in everywhere",
      stringToSearch: "Come with me if you want to live",
      regEx: new RegExp("[\\w]","g"),
@@ -27,7 +27,7 @@ app.constant("learningMode", [
   },
 
   {
-     title: "Get all word-like characters", difficulty: 1, 
+     title: "Get All Entire Words", difficulty: 1, 
      description: "Now just grab entire words. Type <font color='#CC4B09'> [\\w] </font> then add a <font color='#CC4B09'> + </font> after the brackets to match entire words. Keep a <font color='#CC4B09'> g </font> flag in the right box to match everything 'globally'",
      stringToSearch: "Come with me if you want to live",
      regEx: new RegExp("[\\w]+","g"),
@@ -36,7 +36,7 @@ app.constant("learningMode", [
   },
 
   {
-     title: "Get all word-like characters", difficulty: 1, 
+     title: "Always Remember Your First", difficulty: 1, 
      description: "Now just grab the first entire word. Remember how? Type <font color='#CC4B09'> ^ </font> for first item, then <font color='#CC4B09'> [\\w]+ </font> after the brackets to match entire words.",
      stringToSearch: "Come with me if you want to live",
      regEx: new RegExp("^[\\w]+","g"),
@@ -45,7 +45,7 @@ app.constant("learningMode", [
   },
 
   {
-     title: "Get all word-like characters", difficulty: 1, 
+     title: "Last One Is The Rotten Egg", difficulty: 1, 
      description: "Now just grab the LAST entire word. This is new! Use the same <font color='#CC4B09'> [\\w]+ </font>  to match entire words, and add a <font color='#CC4B09'> $ </font> afterword for last item.",
      stringToSearch: "Come with me if you want to live",
      regEx: new RegExp("[\\w]+$",""),
@@ -54,7 +54,7 @@ app.constant("learningMode", [
   },
 
   {
-     title: "Gimme da capppsss", difficulty: 1, 
+     title: "Gimme Da Capppsss", difficulty: 1, 
      description: "Now, grab only all the capital letters everywhere! Inside the <font color='#CC4B09'> [ ] </font> put down a range from <font color='#CC4B09'> A-Z </font>. Make sure to add a <font color='#CC4B09'> g </font> flag",
      stringToSearch: "Aziz! Light! Much better. Thank you, Aziz.",
      regEx: new RegExp("[A-Z]","g"),
@@ -63,7 +63,7 @@ app.constant("learningMode", [
   },
 
   {
-     title: "Lower case letters 4ever", difficulty: 1, 
+     title: "Lower Case Letters 4ever", difficulty: 1, 
      description: "Now, grab only all the lower letters everywhere! Inside the <font color='#CC4B09'> [ ] </font> put down a range from <font color='#CC4B09'> a-z </font>. Again, make sure to add a <font color='#CC4B09'> g </font> flag",
      stringToSearch: "Aziz! Light! Much better. Thank you, Aziz.",
      regEx: new RegExp("[a-z]","g"),
@@ -184,7 +184,7 @@ app.constant("gameMode", [
 	},
 
 	{
-	   title: "Mind Blown: First Word!", difficulty: 1, 
+	   title: "First word: The Hard Way", difficulty: 1, 
 	   description: "select the entire first word",
 	   stringToSearch: "Come with me if you want to live",
 	   regEx: new RegExp("[A-Za-z0-9_]+",""),
@@ -193,7 +193,7 @@ app.constant("gameMode", [
 	},
 
 	{
-	   title: "Mind Blown: Last Word! ", difficulty: 1, 
+	   title: "In The End ", difficulty: 1, 
 	   description: "Select the entire last word",
 	   stringToSearch: "Come with me if you want to live",
 	   regEx: new RegExp("[A-Za-z0-9_]+$",""),
