@@ -84,7 +84,9 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    }
 
    $scope.nextPuzzle = function () {
+      $('.container').removeClass('shake')
       $('.container').addClass('fadeOutLeft')
+      
       $timeout(function(){
          var next = parseInt($routeParams.id) + 1
          next = "/" + next
