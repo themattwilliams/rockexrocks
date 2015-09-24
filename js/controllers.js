@@ -4,15 +4,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    var arr = [];
    $scope.AuthId = AuthId.uid;
 
-   $scope.cssClear = function(){
-      console.log("foo")
-      $('.container').css("position","");
-      $('.container').css("margin-left","");
-      $('.container').css("margin-right","");
-      $('.container').css("width","");
-      $('.container').css("color","red");
-   }
-
    $scope.githubLogin = function () {
       ref.authWithOAuthRedirect("github", function(error) {
         if (error) {
