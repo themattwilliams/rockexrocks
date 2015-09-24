@@ -324,6 +324,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
       // $('.container').removeClass('shake')
+      $(".c4").removeClass('wrong')
       var re = new RegExp(inputRegEx.guess,inputRegEx.flags);
       var match = stringToParse.match(re)
       var answer = stringToParse.match(answerToPuzzle)
@@ -348,6 +349,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
      setTimeout(function(){
          if ( $(".c4").hasClass('correct') ){
             $('.c7').removeClass('hide flipOutX').addClass('animated flipInX')
+            $('.c6').addClass('hide')
          } 
       }, 760) 
      setTimeout(function(){
