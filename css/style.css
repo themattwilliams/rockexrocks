@@ -3,7 +3,7 @@
 	flex-direction: column;
 	max-width: 800px;
 	margin-top: 5px;
-	z-index: 2;
+	z-index: 3;
 	vertical-align: center;
 	text-align: center;
 	position: absolute;
@@ -23,7 +23,7 @@
 	flex-direction: column;
 	max-width: 800px;
 	margin-top: 5px;
-	z-index: 2;
+	z-index: 3;
 	vertical-align: center;
 	position: absolute;
 	margin-left: 30%;

@@ -4,54 +4,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    var arr = [];
    $scope.AuthId = AuthId.uid;
 
-   ////////////////////////////////////////////////////////////////////////////////////// 
-   $(document).ready(function(){
-       animateDiv();
-       
-   });
-
-   function makeNewPosition(){
-       
-       // Get viewport dimensions (remove the dimension of the div)
-       var h = $(window).height() - 50;
-       var w = $(window).width() - 50;
-       
-       var nh = Math.floor(Math.random() * h);
-       var nw = Math.floor(Math.random() * w);
-       
-       return [nh,nw];    
-       
-   }
-
-   function animateDiv(){
-       var newq = makeNewPosition();
-       var oldq = $('.a').offset();
-       var speed = calcSpeed([oldq.top, oldq.left], newq);
-       
-       $('.a').animate({ left: newq[1] }, speed, function(){
-         animateDiv();        
-       });
-       
-   };
-
-   function calcSpeed(prev, next) {
-       
-       var x = Math.abs(prev[1] - next[1]);
-       var y = Math.abs(prev[0] - next[0]);
-       
-       var greatest = x > y ? x : y;
-       
-       var speedModifier = 0.1;
-
-       var speed = Math.ceil(greatest/speedModifier);
-
-       return speed;
-
-   }
-
-
-
-   ///////////////////////////////////////////////////////////////////////////////////////////
    $scope.githubLogin = function () {
       ref.authWithOAuthRedirect("github", function(error) {
         if (error) {
@@ -64,7 +16,11 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.githubLogOut = function () {
       ref.unauth();
-      Materialize.toast('You have logged out', 2000)  
+      Materialize.toast('You have logged out', 1000)  
+      setTimeout(function () {
+          authLoaded();
+          $route.reload();
+      },1100)
    };
 
    function authDataCallback(authData) {
@@ -79,10 +35,12 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
                syncObject[authData.uid] = [0];
                syncObject.$save();     
             }
+            authLoaded(authData);
             // console.log(syncObject,"*********SYNCOBJECT**********");
          })
       } else {
        console.log("User is logged out");
+       $scope.learningMode = learningMode;
      }
    };
 
@@ -320,28 +278,26 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       });
    }
 
-   if (AuthId.uid) {
-      console.log("AUTH ID FOUND")
-      console.log(learningMode)
+   function authLoaded (authData) {
+      if (authData) {
+         console.log("AUTH ID FOUND")
 
-      syncObject.$loaded(function() {
-         for (each in learningMode) {
-            // console.log(learningMode[each].id)
-            for (i = 0 ; i < syncObject[AuthId.uid].length ; i++) {
-               if (syncObject[AuthId.uid][i] === learningMode[each].id) {
-                  console.log("WIN FOUND")
-                  learningMode[each].completed = true
+         syncObject.$loaded(function() {
+            for (each in learningMode) {
+               // console.log(learningMode[each].id)
+               for (i = 0 ; i < syncObject[AuthId.uid].length ; i++) {
+                  if (syncObject[AuthId.uid][i] === learningMode[each].id) {
+                     console.log("WIN FOUND")
+                     learningMode[each].completed = true
+                  }
                }
             }
-         }
-         $scope.learningMode = learningMode;
-      })
-   } else {
-      console.log("NO AUTH ID FOUND")
-      $scope.learningMode = learningMode;
+            $scope.learningMode = learningMode;
+         })
+      } else {
+         console.log("NO AUTH ID FOUND")
+      }
    }
-
-   
 
    $scope.gameMode = gameMode;
 
@@ -358,10 +314,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $scope.puzzle = puzzle;
       } 
    })
-
-   // var pushWinsToFirebaseArray = function (id) {
-   //    ref.onAuth(authDataCallback);
-   // }
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
       // $('.container').removeClass('shake')
@@ -399,6 +351,38 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $scope.input = angular.copy($scope.master);
          } 
       }, 760)
+   }
+
+   $(document).ready(function(){
+       animateDiv();   
+   });
+
+   function makeNewPosition(){      
+       // Get viewport dimensions (remove the dimension of the div)
+       var h = $(window).height() - 50;
+       var w = $(window).width() - 50;
+       
+       var nh = Math.floor(Math.random() * h);
+       var nw = Math.floor(Math.random() * w);    
+       return [nh,nw];        
+   }
+
+   function animateDiv(){
+       var newq = makeNewPosition();
+       var oldq = $('.a').offset();
+       var speed = calcSpeed([oldq.top, oldq.left], newq);     
+       $('.a').animate({ left: newq[1] }, speed, function(){
+         animateDiv();        
+       });      
+   };
+
+   function calcSpeed(prev, next) {     
+       var x = Math.abs(prev[1] - next[1]);
+       var y = Math.abs(prev[0] - next[0]);     
+       var greatest = x > y ? x : y;    
+       var speedModifier = 0.1;
+       var speed = Math.ceil(greatest/speedModifier);
+       return speed;
    }
    
 }]);   
