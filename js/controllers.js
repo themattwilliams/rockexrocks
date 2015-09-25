@@ -10,41 +10,33 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           console.log("Login Failed!", error);
         } else {
           // We'll never get here, as the page will redirect on success.
-        }
+        } // END IF
       });
-   };
+   }; // END FUNCTION
 
    $scope.githubLogOut = function () {
       ref.unauth();
       Materialize.toast('You have logged out', 1000) 
       AuthId.uid = null
       ChangeCompletedToTrueOrFalse(false) 
-      // setTimeout(function () {
-          // authLoaded();
-          // $route.reload();
-      // },1100)
-   };
+   }; // END FUNCTION
 
    function authDataCallback(authData) {
       if (authData) {
          AuthId.set(authData.uid) 
          console.log("User " + authData.uid + " is logged in with " + authData.provider);
-         // console.log($routeParams.id, "I'M THE ID FROM ROUTE")
          syncObject.$loaded().then(function() {
-            // console.log(syncObject,"*********SYNCOBJECT**********");
-            // syncObject[authData.uid] = winPuzzleId
             if (!syncObject[authData.uid]) {
                syncObject[authData.uid] = [0];
                syncObject.$save();     
-            }
+            } // END IF
             authLoaded(authData);
-            // console.log(syncObject,"*********SYNCOBJECT**********");
          })
       } else {
        console.log("User is logged out");
        $scope.learningMode = learningMode;
-     }
-   };
+     } // END IF
+   }; // END FUNCTION
 
    function userWins () {
       var winPuzzleId = parseInt($routeParams.id)
@@ -52,35 +44,32 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          var duplicateFound = false
          syncObject[AuthId.uid].forEach(function(previousWin) {
             if (previousWin === winPuzzleId) {
-               console.log("Win dup found at id", previousWin);
                duplicateFound = true
-            }
-         })
+            } // END IF
+         }) // END FOR LOOP
          if (!duplicateFound) {
             syncObject[AuthId.uid].push(winPuzzleId)   
             syncObject.$save()
-         }
-      }
-   }
+         } // END IF
+      } // END IF
+   } // END FUNCTION
 
    ref.onAuth(authDataCallback);
 
    $scope.changeView = function (view) {
       $location.path(view)
-   }
-   // $scope.name = 'Superhero';
-   // $scope.my_html = '<label><b>Hello </b> <input type="text" value="world !"></label>';
+   } // END FUNCTION
+
 
    $scope.tryAgain = function () {
       console.log($location.$$path)
       $timeout(function(){
-         // $route.reload()
          $('.c6').removeClass('flipInX').addClass('flipOutX')
          $('.c5').removeClass('flipInX').addClass('flipOutX')
          $('.container').removeClass('shake-again')
       },500)
 
-   }
+   } // END FUNCTION
 
    $scope.nextPuzzle = function () {
       $('.container').removeClass('shake')
@@ -91,15 +80,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          next = "/" + next
          $location.path(next)
       },500)
-   }
+   } // END FUNCTION
 
    $scope.keypressAction = function(){
       if ($('.c6').hasClass('animated flipInX')) {
          $scope.tryAgain();
-      }
+      } // END IF
       if ($('.c7').hasClass('animated flipInX')) {
          $scope.nextPuzzle();
-      }
+      } // END IF
    };
 
      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -113,7 +102,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           $(".container").css("font-size", "1.2em")
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "1em")
-          }
+          } // END IF
        } else if ($( window ).width() < 800 && $( window ).width() > 402){
           $(".container").css("width", "60%")
           $(".container").css("margin-left", "20%")
@@ -121,7 +110,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           $(".container").css("font-size", "1.2em")
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "1em")
-          }
+          } // END IF
        } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
           $(".container").css("width", "50%")
           $(".container").css("margin-left", "25%")
@@ -129,7 +118,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           $(".container").css("font-size", "1.5em")
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "1.2em")
-          }
+          } // END IF
        } else if ($( window ).width() > 1600 && $( window ).width() < 1800) {
           $(".container").css("width", "50%")
           $(".container").css("margin-left", "25%")
@@ -137,7 +126,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           $(".container").css("font-size", "2em")
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "2em")
-          }
+          } // END IF
       } else if ($( window ).width() > 1800 && $( window ).width() < 1950) {
           $(".container").css("width", "50%")
           $(".container").css("margin-left", "30%")
@@ -145,7 +134,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           $(".container").css("font-size", "2em")
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "2em")
-          }
+          } // END IF
        } else if ($( window ).width() > 1950 ) {
           $(".container").css("width", "50%")
           $(".container").css("margin-left", "35%")
@@ -153,9 +142,9 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
           $(".container").css("font-size", "2em")
           if ($location.$$path === "/allPuzzles") {
              $(".all-puzzles").css("font-size", "2em")
-          }
-       }
-     }()
+          } // END IF
+       } // END IF
+     }() // END FUNCTION
 
      var onResize = function () {
       $(window).resize(function(event) {
@@ -168,7 +157,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("font-size", "1.2em")
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "1em")
-            }
+            } // END IF
          } else if ($( window ).width() < 800 && $( window ).width() > 402) {
             $(".container").css("width", "60%")
             $(".container").css("margin-left", "20%")
@@ -176,7 +165,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("font-size", "1.2em")
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "1em")
-            }
+            }  // END IF
          } else if ($( window ).width() > 800 && $( window ).width() < 1600) {
             $(".container").css("width", "50%")
             $(".container").css("margin-left", "25%")
@@ -184,7 +173,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("font-size", "1.5em")
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "1.2em")
-            }
+            }  // END IF
          } else if ($( window ).width() > 1600 && $( window ).width() < 1800) {
             $(".container").css("width", "50%")
             $(".container").css("margin-left", "25%")
@@ -192,7 +181,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("font-size", "2em")
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "2em")
-            }
+            } // END IF
         } else if ($( window ).width() > 1800 && $( window ).width() < 1950) {
             $(".container").css("width", "50%")
             $(".container").css("margin-left", "30%")
@@ -200,7 +189,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("font-size", "2em")
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "2em")
-            }
+            }  // END IF
          } else if ($( window ).width() > 1950 ) {
             $(".container").css("width", "50%")
             $(".container").css("margin-left", "35%")
@@ -208,23 +197,21 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
             $(".container").css("font-size", "2em")
             if ($location.$$path === "/allPuzzles") {
                $(".all-puzzles").css("font-size", "2em")
-            }
-         }
+            }  // END IF
+         } // END IF
       });  
-   }()
+   }() // END FUNCTION
 
  // MENU ********************************
 
    $scope.hoverEnter = function(){
        this.hoverOn = true;
-       navHover();
-       // console.log("foo");   
-   };
+       navHover(); 
+   }; // END FUNCTION
 
    $scope.hoverExit = function(){
        this.hoverOn = false;
-       // console.log("bar");
-   };
+   }; // END FUNCTION
 
    var navHover = function () {
       $('#home').hover(function() {
@@ -278,7 +265,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       }, function() {
         $('#sign-out').css("color","#CC4B09")
       });
-   }
+   } // END FUNCTION
 
    function authLoaded (authData) {
       if (authData) {
@@ -287,8 +274,8 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
       } else {
          console.log("NO AUTH ID FOUND")
-      }
-   }
+      } // END IF
+   } // END FUNCTION
 
    ChangeCompletedToTrueOrFalse = function (boolean) {
       if (boolean === true) {
@@ -307,7 +294,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          syncObject.$loaded(function() {
             for (each in learningMode) {
                      learningMode[each].completed = false
-                  } // END IF
+            } // END FOR LOOP
             $scope.learningMode = learningMode;
          }) 
       } // END IF
@@ -319,15 +306,15 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
          $scope.puzzle = puzzle;
-      } 
-   })
+      } // END IF
+   }) // END FOR LOOP
 
    gameMode.forEach(function(puzzle){
       if ($routeParams.id === puzzle.id.toString()) {
          $scope.id = $routeParams.id;
          $scope.puzzle = puzzle;
-      } 
-   })
+      } // END IF
+   })// END FOR LOOP
 
    $scope.regexConverter = function (inputRegEx, stringToParse, answerToPuzzle) {
       // $('.container').removeClass('shake')
@@ -340,7 +327,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $scope.userAnswer = "Your RegEx Returns: " + match
       } else {
          $scope.userAnswer = "Ruh Roh! Your RegEx didn't return anything!"
-      }
+      } // END IF
       if (_.isEqual(match, answer) && match !== null) {
          $(".c4").addClass('correct');
          var puzzle = $routeParams.id 
@@ -351,21 +338,20 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
          $('.container').addClass('shake')
          // $('.container').addClass('shake-again')
          var puzzle = $routeParams.id 
-      }
-
+      } // END IF
      setTimeout(function(){
          if ( $(".c4").hasClass('correct') ){
             $('.c7').removeClass('hide flipOutX').addClass('animated flipInX')
             $('.c6').addClass('hide')
-         } 
+         }
       }, 760) 
      setTimeout(function(){
          if ( $(".c4").hasClass('wrong') ){
             $('.c6').removeClass('hide flipOutX').addClass('animated flipInX')
             $scope.input = angular.copy($scope.master);
-         } 
+         }
       }, 760)
-   }
+   } // END FUNCTION
 
    $(document).ready(function(){
        animateDiv();   
@@ -379,7 +365,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
        var nh = Math.floor(Math.random() * h);
        var nw = Math.floor(Math.random() * w);    
        return [nh,nw];        
-   }
+   } // END FUNCTION
 
    function animateDiv(){
        var newq = makeNewPosition();
@@ -388,7 +374,7 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
        $('.a').animate({ left: newq[1] }, speed, function(){
          animateDiv();        
        });      
-   };
+   }; // END FUNCTION
 
    function calcSpeed(prev, next) {     
        var x = Math.abs(prev[1] - next[1]);
@@ -397,6 +383,6 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
        var speedModifier = 0.1;
        var speed = Math.ceil(greatest/speedModifier);
        return speed;
-   }
+   } // END FUNCTION
    
 }]);   
