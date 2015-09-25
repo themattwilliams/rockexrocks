@@ -323,7 +323,53 @@ span.r2 {
 	from {background-position:0 0;}
 	to {background-position: -800px 0;}
 }
-/**/
+
+.scroll-slow{
+	z-index: 1;
+	overflow: hidden;
+	position: fixed;
+	bottom: 500px;
+	zoom: 50%;
+	width: 10000px;
+	height: 161px;
+	margin:0;
+	padding:0;
+	font-family:"arial",heletica,sans-serif;
+	font-size:12px;
+    background: #2980b9 url('../images/game-scroll-top.jpg') repeat 0 0;
+	-webkit-animation: 50s linear 0s normal none infinite animate;
+	-moz-animation: 50s linear 0s normal none infinite animate;
+	-ms-animation: 50s linear 0s normal none infinite animate;
+	-o-animation: 50s linear 0s normal none infinite animate;
+	animation: 50s linear 0s normal none infinite animate;
+ 
+}
+
+@-webkit-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-moz-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-ms-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@-o-keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+ 
+@keyframes animate {
+	from {background-position:0 0;}
+	to {background-position: -800px 0;}
+}
+/************************************************************************************************************************/
 
 body {
 	background-color: #DBFCFF;
@@ -391,5 +437,15 @@ body {
  
 .animate-enter.animate-enter-active {
 	opacity: 1;
+}
+
+div.a {
+z-index: 2;
+bottom: 55px;
+width: 40px;
+height:34px;
+content:url(../images/turtle-shell.png);
+position:fixed;
+    
 }
 
