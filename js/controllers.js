@@ -16,11 +16,13 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
 
    $scope.githubLogOut = function () {
       ref.unauth();
-      Materialize.toast('You have logged out', 1000)  
-      setTimeout(function () {
-          authLoaded();
-          $route.reload();
-      },1100)
+      Materialize.toast('You have logged out', 1000) 
+      AuthId.uid = null
+      ChangeCompletedToTrueOrFalse(false) 
+      // setTimeout(function () {
+          // authLoaded();
+          // $route.reload();
+      // },1100)
    };
 
    function authDataCallback(authData) {
@@ -281,23 +283,35 @@ app.controller('RegExController', ["$scope", "$location", "$routeParams", "$rout
    function authLoaded (authData) {
       if (authData) {
          console.log("AUTH ID FOUND")
+         ChangeCompletedToTrueOrFalse(true)
 
+      } else {
+         console.log("NO AUTH ID FOUND")
+      }
+   }
+
+   ChangeCompletedToTrueOrFalse = function (boolean) {
+      if (boolean === true) {
          syncObject.$loaded(function() {
             for (each in learningMode) {
                // console.log(learningMode[each].id)
                for (i = 0 ; i < syncObject[AuthId.uid].length ; i++) {
                   if (syncObject[AuthId.uid][i] === learningMode[each].id) {
-                     console.log("WIN FOUND")
                      learningMode[each].completed = true
-                  }
-               }
-            }
+                  }// END IF
+               }// END FOR LOOP
+            } // END FOR LOOP
             $scope.learningMode = learningMode;
          })
       } else {
-         console.log("NO AUTH ID FOUND")
-      }
-   }
+         syncObject.$loaded(function() {
+            for (each in learningMode) {
+                     learningMode[each].completed = false
+                  } // END IF
+            $scope.learningMode = learningMode;
+         }) 
+      } // END IF
+   } // END FUNCTION
 
    $scope.gameMode = gameMode;
 
