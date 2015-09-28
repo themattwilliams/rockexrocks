@@ -1,3 +1,12 @@
+    <div class="modal-content">
+		<div id="loginContainer">
+			<span>Login With:</span>
+			<span id="box-wrap-inner" ng-click=""><img src="http://images.dailytech.com/frontpage/fp__G_is_For_Google_New_Logo_Thumb.png" alt=""></span>
+			<span id="box-wrap-inner"><i class="fa fa-facebook-official fa-4x"></i></span>
+			<span id="box-wrap-inner"><i class="fa fa-twitter-square fa-4x"></i></span>
+		</div>
+    </div>
+
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
@@ -11,22 +20,24 @@
             <th>Completed</th>
           </tr>
         </thead>
-        <tbody>
-          <tr ng-repeat="puzzle in learningMode" ng-click="changeView(puzzle.id)" class="modal-action modal-close">
-            <td>{{puzzle.puzzle}}</td>
-            <td>{{puzzle.description}}</td>
-            <td>{{puzzle.difficulty}}</td>
-            <td>{{puzzle.completed}}</td>
-          </tr>
-
-        </tbody>
       </table>
     </div>
     <div class="modal-footer">
       <a ng-href="#{{puzzle.id}}" class="modal-action modal-close waves-effect waves-green btn-flat ">Let Me Play!!</a>
     </div>
   </div>
-          
+
+
+  <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal2">Modal</a>
+
+  <!-- Modal Structure -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+  </div>
 
   <div class="flex-menu-container">
 

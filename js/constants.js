@@ -159,43 +159,43 @@ app.constant("learningMode", [
      regEx: new RegExp("z{2,5}","g"),
      id: 18,
      attempted: false, completed: false
+  },
+
+  {
+     title: "Wish Upon A Star", difficulty: 1, 
+     description: "The * symbol is called the Kleen Star. It means match 0 or more of the preceding token. This mean aa+e* will match aa, aae, aaee, and aaeeeeee. See for yourself! Match all 4 words",
+     stringToSearch: "aa, aae, aaee, and aaeeeeee",
+     regEx: new RegExp("aa[e]*","g"),
+     id: 19,
+     attempted: false, completed: false
+  },
+
+  {
+     title: "Mind Blown: Last Word! ", difficulty: 1, 
+     description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
+     stringToSearch: "Come with me if you want to live",
+     regEx: new RegExp("[A-Za-z0-9_]+$",""),
+     id: 20,
+     attempted: false, completed: false
+  },
+
+  {
+     title: "Mind Blown: Last Word! ", difficulty: 1, 
+     description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
+     stringToSearch: "Come with me if you want to live",
+     regEx: new RegExp("[A-Za-z0-9_]+$",""),
+     id: 21,
+     attempted: false, completed: false
+  },
+
+  {
+     title: "Mind Blown: Last Word! ", difficulty: 1, 
+     description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
+     stringToSearch: "Come with me if you want to live",
+     regEx: new RegExp("[A-Za-z0-9_]+$",""),
+     id: 22,
+     attempted: false, completed: false
   }
-
-  // {
-  //    title: "Mind Blown: Last Word!", difficulty: 1, 
-  //    description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
-  //    stringToSearch: "Come with me if you want to live",
-  //    regEx: new RegExp("[A-Za-z0-9_]+$",""),
-  //    id: 19,
-  //    attempted: false, completed: false
-  // },
-
-  // {
-  //    title: "Mind Blown: Last Word! ", difficulty: 1, 
-  //    description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
-  //    stringToSearch: "Come with me if you want to live",
-  //    regEx: new RegExp("[A-Za-z0-9_]+$",""),
-  //    id: 20,
-  //    attempted: false, completed: false
-  // },
-
-  // {
-  //    title: "Mind Blown: Last Word! ", difficulty: 1, 
-  //    description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
-  //    stringToSearch: "Come with me if you want to live",
-  //    regEx: new RegExp("[A-Za-z0-9_]+$",""),
-  //    id: 21,
-  //    attempted: false, completed: false
-  // },
-
-  // {
-  //    title: "Mind Blown: Last Word! ", difficulty: 1, 
-  //    description: "Now type <font color='#CC4B09'> [A-Za-z0-9_] </font>, add a <font color='#CC4B09'> + </font> and then add a <font color='#CC4B09'> $ </font>. Remember, a <font color='#CC4B09'> + </font> matches one or more instance of the preceding token, a <font color='#CC4B09'> $ </font> matches the end of the string.",
-  //    stringToSearch: "Come with me if you want to live",
-  //    regEx: new RegExp("[A-Za-z0-9_]+$",""),
-  //    id: 22,
-  //    attempted: false, completed: false
-  // }
 
 ]);
 // ####################################################################################################################################################################################################
