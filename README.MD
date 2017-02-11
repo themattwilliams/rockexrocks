@@ -1,3 +1,5 @@
+![Regex.rocks home screen](https://raw.githubusercontent.com/themattwilliams/rockexrocks/master/images/home-screen.png "Regex.rocks!")
+
 # RegEx Rocks
  Learning RegEx is tough, and good resources for beginners are virtually nonexistent. This pet project tackles the problem by creating a gamified learning model. In this "16-bit" Mario-style RegEx game, users progress through levels and learn new RegEx patterns and skills. Built with AngularJS, Firebase
 
@@ -18,4 +20,3 @@ Go to Regex.rocks to see it live.
 
 MIT
 
-![Regex.rocks home screen](https://raw.githubusercontent.com/themattwilliams/rockexrocks/master/images/home-screen.png "Regex.rocks!")
