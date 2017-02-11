@@ -18,4 +18,4 @@ Go to Regex.rocks to see it live.
 
 MIT
 
-![Regex.rocks home screen](https://github.com/themattwilliams/rockexrocks/tree/master/images/home-screen.png "Regex.rocks!")
+![Regex.rocks home screen](https://raw.githubusercontent.com/themattwilliams/rockexrocks/master/images/home-screen.png "Regex.rocks!")
