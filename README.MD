@@ -1,3 +1,5 @@
+## Go to [regex.rocks] (http://regex.rocks/) to see the project live
+
 ![Regex.rocks home screen](https://raw.githubusercontent.com/themattwilliams/rockexrocks/master/images/home-screen.png "Regex.rocks!")
 
 # RegEx Rocks
